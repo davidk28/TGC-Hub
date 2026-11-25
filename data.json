@@ -1,15 +1,12 @@
 {
-  "last_updated": "2026-11-25 14:00",
+  "last_updated": "2026-11-25 15:20",
   "items": [
     {
       "id": "acs-21256",
       "agency": "數位發展部資通安全署",
       "agency_code": "ACS",
       "category": "技術指引",
-      "domain_tags": [
-        "IT",
-        "AI資安"
-      ],
+      "domain_tags": ["IT", "AI資安"],
       "title": "各機關基於風險導向之弱點處置期限評估指引",
       "publish_date": "2026-11-06",
       "updated_date": "2026-11-13",
@@ -23,15 +20,28 @@
       "is_recent": true
     },
     {
+      "id": "acs-law-sub-202601",
+      "agency": "數位發展部資通安全署",
+      "agency_code": "ACS",
+      "category": "法令與子法",
+      "domain_tags": ["IT", "OT", "資安法"],
+      "title": "資通安全管理法施行細則及資通安全責任等級分級辦法（2026年1月修正）",
+      "publish_date": "2026-01-05",
+      "updated_date": "2026-01-09",
+      "source_url": "https://moda.gov.tw/ACS/laws/regulations/624",
+      "summary": "配合《資通安全管理法》修法，修正施行細則、責任等級分級辦法、事件通報應變及演練辦法與稽核辦法，明確區分機關責任等級（A～E級）與資通系統防護需求分級（普、中、高）。",
+      "highlights": [
+        "【雙軌分級制度】機關責任等級（A～E級）對應附表一至八應辦事項；資通系統防護需求分級（普、中、高）對應附表九、十防護基準，兩者不可混為一談。",
+        "【法規入口】數位發展部資通安全署「資通安全管理法及子法」專區提供母法與各子法最新條文。"
+      ],
+      "is_recent": false
+    },
+    {
       "id": "acs-ciip-115-ot",
       "agency": "數位發展部資通安全署",
       "agency_code": "ACS",
       "category": "OT / 工控 / IoT",
-      "domain_tags": [
-        "OT",
-        "工控ICS",
-        "關鍵基礎設施"
-      ],
+      "domain_tags": ["OT", "工控ICS", "關鍵基礎設施"],
       "title": "115 年度關鍵資訊基礎設施資安防護建議（涵蓋 OT／工控與雲端互聯風險）",
       "publish_date": "2026-01-01",
       "updated_date": "2026-06-01",
@@ -48,12 +58,7 @@
       "agency": "數位發展部資通安全署",
       "agency_code": "ACS",
       "category": "OT / 工控 / IoT",
-      "domain_tags": [
-        "OT",
-        "工控ICS",
-        "IoT",
-        "SCADA"
-      ],
+      "domain_tags": ["OT", "工控ICS", "IoT", "SCADA"],
       "title": "工控物聯網共通性資安指南與工控設備業資安實務指南",
       "publish_date": "2025-06-01",
       "updated_date": "2026-03-01",
@@ -70,10 +75,7 @@
       "agency": "國家資通安全研究院",
       "agency_code": "NICS",
       "category": "OT / 工控 / IoT",
-      "domain_tags": [
-        "IoT",
-        "設備安全"
-      ],
+      "domain_tags": ["IoT", "設備安全"],
       "title": "物聯網（IoT）設備共通資安指引與檢測基準參考",
       "publish_date": "2025-01-01",
       "updated_date": "2026-01-15",
@@ -86,19 +88,33 @@
       "is_recent": false
     },
     {
+      "id": "nics-20260603-01",
+      "agency": "國家資通安全研究院",
+      "agency_code": "NICS",
+      "category": "防護基準",
+      "domain_tags": ["IT", "系統防護"],
+      "title": "資通系統防護基準驗證實務與成熟度評估指引",
+      "publish_date": "2026-06-03",
+      "updated_date": "2026-06-03",
+      "source_url": "https://www.nics.nat.gov.tw/",
+      "summary: "協助各公務機關及特定非公務機關依資通系統防護需求分級（普、中、高），落實存取控制、鑑識與稽核、組態管理及系統獲取開發維護之控制措施。",
+      "highlights": [
+        "提供普、中、高三個防護等級之具體檢核項目與佐證資料準備範例。",
+        "對齊 ISO/IEC 27001:2022 控制措施與政府組態基準（GCB）導入實務。"
+      ],
+      "is_recent": false
+    },
+    {
       "id": "fsc-tpex-20261111",
       "agency": "金融監督管理委員會",
       "agency_code": "FSC",
       "category": "防護基準",
-      "domain_tags": [
-        "IT",
-        "公司治理"
-      ],
+      "domain_tags": ["IT", "公司治理"],
       "title": "上市上櫃公司資通安全管控指引修訂對照表（櫃買中心彙整）",
       "publish_date": "2026-11-11",
       "updated_date": "2026-11-11",
       "source_url": "https://dsp.tpex.org.tw/web/listing/security.php",
-      "summary": "彙整上市上櫃公司資通安全管控指引修訂對照與資安分級防護重點，涵蓋資安長治理職責、資安人力配置、內控連結與重大事件揭露。",
+      "summary: "彙整上市上櫃公司資通安全管控指引修訂對照與資安分級防護重點，涵蓋資安長治理職責、資安人力配置、內控連結與重大事件揭露。",
       "highlights": [
         "強化董事會對資通安全風險之監督責任與資安長（CISO）定期報告機制。",
         "明確規範第一級與第二級上市櫃公司之資安專責主管與人員配置門檻。"
@@ -110,15 +126,12 @@
       "agency": "金融監督管理委員會",
       "agency_code": "FSC",
       "category": "技術指引",
-      "domain_tags": [
-        "IT",
-        "金融資安"
-      ],
+      "domain_tags": ["IT", "金融資安"],
       "title": "金融機構資通安全防護基準與新興科技作業規範彙整",
       "publish_date": "2026-11-17",
       "updated_date": "2026-11-17",
       "source_url": "https://www.fsc.gov.tw/ch/home.jsp?id=1072&parentpath=0,7,478",
-      "summary": "涵蓋金融機構資通安全防護基準及金融機構運用新興科技作業規範，落實零信任架構、API/雲端監控、AI安全與供應鏈管理要求。",
+      "summary: "涵蓋金融機構資通安全防護基準及金融機構運用新興科技作業規範，落實零信任架構、API/雲端監控、AI安全與供應鏈管理要求。",
       "highlights": [
         "針對雲端運算、AI 應用與開放 API 建立安全控管與持續監控基準。",
         "要求金融機構強化第三方資訊服務供應商之資安風險評估與稽核。"
@@ -130,58 +143,32 @@
       "agency": "個人資料保護專責機關／國發會",
       "agency_code": "PDPC",
       "category": "法令與子法",
-      "domain_tags": [
-        "個資法",
-        "IT"
-      ],
-      "title": "個人資料保護法修正條文重點與個資會籌備／施行進度追蹤",
+      "domain_tags": ["個資法", "IT"],
+      "title": "個人資料保護法修正條文重點與個資會籌備處法規預告動態",
       "publish_date": "2025-11-11",
-      "updated_date": "2026-11-22",
-      "source_url": "https://www.ndc.gov.tw/",
-      "summary": "追蹤2025年11月公布之個資法修正方向（事故通知當事人與通報主管機關雙軌義務、強化安全維護措施），並同步監控個人資料保護委員會籌備處進度。",
+      "updated_date": "2026-11-24",
+      "source_url": "https://www.pdpc.gov.tw/",
+      "summary: "追蹤立法院三讀通過並公布之《個人資料保護法》部分條文修正重點，以及個人資料保護委員會籌備處推動之子法與施行細則修正草案預告動態。",
       "highlights": [
-        "【雙軌通報義務】個資外洩或侵害事故發生時，除通知當事人外，須依規定向主管機關通報。",
-        "【行政檢查與裁罰】強化非公務機關安全維護措施義務與主管機關行政檢查權限。"
+        "【雙軌通報與安全維護】強化個資侵害事故通報與通知義務、安全維護措施及個資治理要求。",
+        "【子法與籌備動態】可於個人資料保護委員會籌備處網站追蹤相關子法修正草案與施行進度。"
       ],
       "is_recent": true
     },
     {
-      "id": "nics-20260603-01",
-      "agency": "國家資通安全研究院",
-      "agency_code": "NICS",
-      "category": "防護基準",
-      "domain_tags": [
-        "IT",
-        "系統防護"
-      ],
-      "title": "資通系統防護基準驗證實務與成熟度評估指引",
-      "publish_date": "2026-06-03",
-      "updated_date": "2026-06-03",
-      "source_url": "https://www.nics.nat.gov.tw/",
-      "summary": "協助各公務機關及特定非公務機關依資通系統防護需求分級（普、中、高），落實存取控制、鑑識與稽核、組態管理及系統獲取開發維護之控制措施。",
+      "id": "pdpa-safeguard-plan-guide",
+      "agency": "個人資料保護專責機關／國發會",
+      "agency_code": "PDPC",
+      "category": "稽核與範本",
+      "domain_tags": ["個資法", "安維計畫"],
+      "title": "個人資料檔案安全維護計畫與適當安全維護措施（施行細則第12條／第8條）",
+      "publish_date": "2024-01-12",
+      "updated_date": "2026-04-02",
+      "source_url": "https://www.ndc.gov.tw/",
+      "summary: "整理《個人資料保護法施行細則》第12條適當安全維護措施、第8條委外監督義務及各目的事業主管機關個人資料檔案安全維護管理辦法之稽核重點。",
       "highlights": [
-        "提供普、中、高三個防護等級之具體檢核項目與佐證資料準備範例。",
-        "對齊 ISO/IEC 27001:2022 控制措施與政府組態基準（GCB）導入實務。"
-      ],
-      "is_recent": false
-    },
-    {
-      "id": "acs-law-202601",
-      "agency": "數位發展部資通安全署",
-      "agency_code": "ACS",
-      "category": "法令與子法",
-      "domain_tags": [
-        "IT",
-        "OT",
-        "法遵"
-      ],
-      "title": "資通安全管理法及其子法（責任等級分級、通報應變、稽核辦法）彙編",
-      "publish_date": "2026-01-15",
-      "updated_date": "2026-01-15",
-      "source_url": "https://moda.gov.tw/ACS/laws/554",
-      "summary": "收錄《資通安全管理法》母法及六項子法最新條文，明定公務機關與特定非公務機關之資通安全責任等級分級、應辦事項及事件通報應變程序。",
-      "highlights": [
-        "明確規範 A、B、C、D、E 各責任等級之資安專職人力、教育訓練、弱點掃描、滲透測試與紅藍隊演練頻率。"
+        "涵蓋個資盤點與風險評估、事故應變通報、資料安全管理、設備與存取控管及委外廠商監督。",
+        "實務上可結合 ISO/IEC 27701 與各業別安維計畫範本建立查核紀錄。"
       ],
       "is_recent": false
     },
@@ -190,15 +177,12 @@
       "agency": "教育部",
       "agency_code": "MOE",
       "category": "稽核與範本",
-      "domain_tags": [
-        "IT",
-        "教育體系"
-      ],
+      "domain_tags": ["IT", "教育體系"],
       "title": "資通安全維護計畫（範本）版本 2.1（國教署與教育體系適用）",
       "publish_date": "2026-08-04",
       "updated_date": "2026-08-04",
       "source_url": "https://www.k12ea.gov.tw/",
-      "summary": "教育部國民及學前教育署更新之資通安全維護計畫範本 v2.1，協助各級學校與教育體系落實資安維護計畫撰寫、委外管理與稽核改善。",
+      "summary: "教育部國民及學前教育署更新之資通安全維護計畫範本 v2.1，協助各級學校與教育體系落實資安維護計畫撰寫、委外管理與稽核改善。",
       "highlights": [
         "涵蓋核心業務盤點、資安推動小組組織職掌、委外廠商安全管理與教育訓練時數規範。"
       ],
@@ -209,15 +193,12 @@
       "agency": "衛生福利部",
       "agency_code": "MOHW",
       "category": "技術指引",
-      "domain_tags": [
-        "IT",
-        "醫療OT設備"
-      ],
+      "domain_tags": ["IT", "醫療OT設備"],
       "title": "基層醫療院所資安防護參考指引與醫療資安治理重點",
       "publish_date": "2026-02-03",
       "updated_date": "2026-02-03",
       "source_url": "https://www.mohw.gov.tw/",
-      "summary": "提供醫療與醫務設備區隔、作業系統與防毒更新、教育訓練時數、委外合約資安、健保VPN與Wi-Fi網段隔離及高敏感醫療資料防護參考。",
+      "summary: "提供醫療與醫務設備區隔、作業系統與防毒更新、教育訓練時數、委外合約資安、健保VPN與Wi-Fi網段隔離及高敏感醫療資料防護參考。",
       "highlights": [
         "要求醫療設備網路與一般行政網路隔離，並加強對 HIS/PACS 系統與健保 VPN 端點之存取控管。"
       ],

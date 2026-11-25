@@ -18,7 +18,7 @@ TZ_TW = timezone(timedelta(hours=8))
 
 KEYWORDS = [
     "資安", "資通安全", "個資", "個人資料", "弱點",
-    "工控", "OT", "IoT", "物聯網", "SCADA", "零信任", "防護基準"
+    "工控", "OT", "IoT", "物聯網", "SCADA", "零信任", "防護基準", "施行細則"
 ]
 
 
@@ -37,6 +37,7 @@ def refresh_known_pages(existing_map: dict) -> None:
     known_urls = [
         ("acs-21256", "https://moda.gov.tw/ACS/operations/aisec/21256"),
         ("acs-ciip-115-ot", "https://moda.gov.tw/ACS/operations/ciip/650"),
+        ("acs-law-sub-202601", "https://moda.gov.tw/ACS/laws/regulations/624"),
     ]
     for item_id, url in known_urls:
         html = fetch_html(url)
@@ -118,6 +119,7 @@ def main() -> None:
     refresh_known_pages(existing_map)
 
     scan_targets = [
+        ("PDPC", "個人資料保護專責機關／國發會", "https://www.pdpc.gov.tw/", "法令與子法", ["個資法", "IT"]),
         ("FSC", "金融監督管理委員會", "https://www.fsc.gov.tw/ch/home.jsp?id=1072&parentpath=0,7,478", "技術指引", ["IT", "金融資安"]),
         ("FSC", "金融監督管理委員會", "https://dsp.tpex.org.tw/web/listing/security.php", "防護基準", ["IT", "公司治理"]),
         ("PDPC", "個人資料保護專責機關／國發會", "https://www.ndc.gov.tw/", "法令與子法", ["個資法", "IT"]),

@@ -19,10 +19,10 @@
           <div class="flex items-center gap-2 text-xs text-sky-400 font-semibold tracking-wider uppercase mb-1">
             <span>Taiwan IT / OT / ICS / IoT & Privacy Hub</span>
             <span>•</span>
-            <span id="last-updated-text">資料更新時間：2026-11-25 14:00</span>
+            <span id="last-updated-text">資料更新時間：2026-11-25 15:20</span>
           </div>
           <h1 class="text-2xl sm:text-3xl font-bold tracking-tight">台灣政府資安、工控OT與個資法規指引彙整中心</h1>
-          <p class="text-slate-300 text-sm mt-1">涵蓋資安署、資安院、金管會、個資會/國發會、教育部與衛福部之 IT、OT、工控與物聯網規範</p>
+          <p class="text-slate-300 text-sm mt-1">涵蓋資安署、資安院、金管會、個資會籌備處/國發會、教育部與衛福部之 IT、OT、工控、IoT 與個資法規</p>
         </div>
         <div class="flex items-center gap-3">
           <div class="bg-slate-800 border border-slate-700 rounded-lg px-4 py-2 text-center">
@@ -66,6 +66,11 @@
     </div>
 
     <div id="toast" class="hidden mb-4 px-4 py-3 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800 text-sm font-medium"></div>
+
+    <div class="mb-3 flex items-center justify-between text-xs text-slate-500">
+      <span id="result-summary">顯示全部資料</span>
+      <button onclick="resetFilters()" class="text-sky-600 hover:underline cursor-pointer">顯示全部單位與類型</button>
+    </div>
 
     <div id="regulation-list" class="space-y-4"></div>
 
@@ -127,6 +132,23 @@
         is_recent: true
       },
       {
+        id: "acs-law-sub-202601",
+        agency: "數位發展部資通安全署",
+        agency_code: "ACS",
+        category: "法令與子法",
+        domain_tags: ["IT", "OT", "資安法"],
+        title: "資通安全管理法施行細則及資通安全責任等級分級辦法（2026年1月修正）",
+        publish_date: "2026-01-05",
+        updated_date: "2026-01-09",
+        source_url: "https://moda.gov.tw/ACS/laws/regulations/624",
+        summary: "配合《資通安全管理法》修法，修正施行細則、責任等級分級辦法、事件通報應變及演練辦法與稽核辦法，明確區分機關責任等級（A～E級）與資通系統防護需求分級（普、中、高）。",
+        highlights: [
+          "【雙軌分級制度】機關責任等級（A～E級）對應附表一至八應辦事項；資通系統防護需求分級（普、中、高）對應附表九、十防護基準，兩者不可混為一談。",
+          "【法規入口】數位發展部資通安全署「資通安全管理法及子法」專區提供母法與各子法最新條文。"
+        ],
+        is_recent: false
+      },
+      {
         id: "acs-ciip-115-ot",
         agency: "數位發展部資通安全署",
         agency_code: "ACS",
@@ -178,6 +200,23 @@
         is_recent: false
       },
       {
+        id: "nics-20260603-01",
+        agency: "國家資通安全研究院",
+        agency_code: "NICS",
+        category: "防護基準",
+        domain_tags: ["IT", "系統防護"],
+        title: "資通系統防護基準驗證實務與成熟度評估指引",
+        publish_date: "2026-06-03",
+        updated_date: "2026-06-03",
+        source_url: "https://www.nics.nat.gov.tw/",
+        summary: "協助各公務機關及特定非公務機關依資通系統防護需求分級（普、中、高），落實存取控制、鑑識與稽核、組態管理及系統獲取開發維護之控制措施。",
+        highlights: [
+          "提供普、中、高三個防護等級之具體檢核項目與佐證資料準備範例。",
+          "對齊 ISO/IEC 27001:2022 控制措施與政府組態基準（GCB）導入實務。"
+        ],
+        is_recent: false
+      },
+      {
         id: "fsc-tpex-20261111",
         agency: "金融監督管理委員會",
         agency_code: "FSC",
@@ -217,47 +256,31 @@
         agency_code: "PDPC",
         category: "法令與子法",
         domain_tags: ["個資法", "IT"],
-        title: "個人資料保護法修正條文重點與個資會籌備／施行進度追蹤",
+        title: "個人資料保護法修正條文重點與個資會籌備處法規預告動態",
         publish_date: "2025-11-11",
-        updated_date: "2026-11-22",
-        source_url: "https://www.ndc.gov.tw/",
-        summary: "追蹤2025年11月公布之個資法修正方向（事故通知當事人與通報主管機關雙軌義務、強化安全維護措施），並同步監控個人資料保護委員會籌備處進度。",
+        updated_date: "2026-11-24",
+        source_url: "https://www.pdpc.gov.tw/",
+        summary: "追蹤立法院三讀通過並公布之《個人資料保護法》部分條文修正重點，以及個人資料保護委員會籌備處推動之子法與施行細則修正草案預告動態。",
         highlights: [
-          "【雙軌通報義務】個資外洩或侵害事故發生時，除通知當事人外，須依規定向主管機關通報。",
-          "【行政檢查與裁罰】強化非公務機關安全維護措施義務與主管機關行政檢查權限。"
+          "【雙軌通報與安全維護】強化個資侵害事故通報與通知義務、安全維護措施及個資治理要求。",
+          "【子法與籌備動態】可於個人資料保護委員會籌備處網站追蹤相關子法修正草案與施行進度。"
         ],
         is_recent: true
       },
       {
-        id: "nics-20260603-01",
-        agency: "國家資通安全研究院",
-        agency_code: "NICS",
-        category: "防護基準",
-        domain_tags: ["IT", "系統防護"],
-        title: "資通系統防護基準驗證實務與成熟度評估指引",
-        publish_date: "2026-06-03",
-        updated_date: "2026-06-03",
-        source_url: "https://www.nics.nat.gov.tw/",
-        summary: "協助各公務機關及特定非公務機關依資通系統防護需求分級（普、中、高），落實存取控制、鑑識與稽核、組態管理及系統獲取開發維護之控制措施。",
+        id: "pdpa-safeguard-plan-guide",
+        agency: "個人資料保護專責機關／國發會",
+        agency_code: "PDPC",
+        category: "稽核與範本",
+        domain_tags: ["個資法", "安維計畫"],
+        title: "個人資料檔案安全維護計畫與適當安全維護措施（施行細則第12條／第8條）",
+        publish_date: "2024-01-12",
+        updated_date: "2026-04-02",
+        source_url: "https://www.ndc.gov.tw/",
+        summary: "整理《個人資料保護法施行細則》第12條適當安全維護措施、第8條委外監督義務及各目的事業主管機關個人資料檔案安全維護管理辦法之稽核重點。",
         highlights: [
-          "提供普、中、高三個防護等級之具體檢核項目與佐證資料準備範例。",
-          "對齊 ISO/IEC 27001:2022 控制措施與政府組態基準（GCB）導入實務。"
-        ],
-        is_recent: false
-      },
-      {
-        id: "acs-law-202601",
-        agency: "數位發展部資通安全署",
-        agency_code: "ACS",
-        category: "法令與子法",
-        domain_tags: ["IT", "OT", "法遵"],
-        title: "資通安全管理法及其子法（責任等級分級、通報應變、稽核辦法）彙編",
-        publish_date: "2026-01-15",
-        updated_date: "2026-01-15",
-        source_url: "https://moda.gov.tw/ACS/laws/554",
-        summary: "收錄《資通安全管理法》母法及六項子法最新條文，明定公務機關與特定非公務機關之資通安全責任等級分級、應辦事項及事件通報應變程序。",
-        highlights: [
-          "明確規範 A、B、C、D、E 各責任等級之資安專職人力、教育訓練、弱點掃描、滲透測試與紅藍隊演練頻率。"
+          "涵蓋個資盤點與風險評估、事故應變通報、資料安全管理、設備與存取控管及委外廠商監督。",
+          "實務上可結合 ISO/IEC 27701 與各業別安維計畫範本建立查核紀錄。"
         ],
         is_recent: false
       },
@@ -418,6 +441,10 @@
         return true;
       });
 
+      const agencyLabel = selectedAgency === "ALL" ? "全部單位" : agencyMeta[selectedAgency].label;
+      document.getElementById("result-summary").textContent =
+        `目前篩選：${agencyLabel} ／ ${selectedCategory}（共 ${filtered.length} 筆）`;
+
       const listEl = document.getElementById("regulation-list");
       const emptyEl = document.getElementById("empty-state");
 
@@ -517,7 +544,7 @@
 
     function simulateSync() {
       const toast = document.getElementById("toast");
-      toast.textContent = "已完成同步檢查：目前已載入最新 IT、OT/工控/IoT、金管會、個資法及各部會資安指引資料。";
+      toast.textContent = "已完成同步檢查：目前已載入最新 IT、OT/工控/IoT、金管會、個資法與各部會資安指引資料（共 " + regulationsData.length + " 筆）。";
       toast.classList.remove("hidden");
       setTimeout(() => toast.classList.add("hidden"), 4500);
     }
