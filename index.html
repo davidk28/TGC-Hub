@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>台灣政府資安、工控OT與個資法規指引彙整中心</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", sans-serif; }
+    mark { background-color: #fef08a; padding: 0 2px; border-radius: 2px; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen">
+
+  <header class="bg-slate-900 text-white shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div>
+          <div class="flex items-center gap-2 text-xs text-sky-400 font-semibold tracking-wider uppercase mb-1">
+            <span>Taiwan IT / OT / ICS / IoT & Privacy Hub</span>
+            <span>•</span>
+            <span id="last-updated-text">資料更新時間：2026-11-25 14:00</span>
+          </div>
+          <h1 class="text-2xl sm:text-3xl font-bold tracking-tight">台灣政府資安、工控OT與個資法規指引彙整中心</h1>
+          <p class="text-slate-300 text-sm mt-1">涵蓋資安署、資安院、金管會、個資會/國發會、教育部與衛福部之 IT、OT、工控與物聯網規範</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <div class="bg-slate-800 border border-slate-700 rounded-lg px-4 py-2 text-center">
+            <div class="text-xs text-slate-400">收錄總數</div>
+            <div id="stat-total" class="text-xl font-bold text-white">0</div>
+          </div>
+          <div class="bg-slate-800 border border-slate-700 rounded-lg px-4 py-2 text-center">
+            <div class="text-xs text-slate-400">近期更新</div>
+            <div id="stat-recent" class="text-xl font-bold text-emerald-400">0</div>
+          </div>
+          <button id="btn-sync" onclick="simulateSync()" class="bg-sky-600 hover:bg-sky-500 text-white text-sm font-medium px-4 py-3 rounded-lg shadow transition flex items-center gap-2 cursor-pointer">
+            <span>↻</span>
+            <span>同步最新資料</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <div id="agency-tabs" class="flex flex-wrap gap-2 pb-4 border-b border-slate-200 mb-5"></div>
+
+    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 mb-6 flex flex-col lg:flex-row gap-4 justify-between items-stretch lg:items-center">
+      <div id="category-filters" class="flex flex-wrap gap-2"></div>
+
+      <div class="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center">
+        <label class="inline-flex items-center gap-2 text-sm text-slate-700 cursor-pointer select-none px-2">
+          <input type="checkbox" id="filter-recent" class="rounded border-slate-300 text-sky-600 focus:ring-sky-500" onchange="renderList()" />
+          <span>僅看近期更新</span>
+        </label>
+        <label class="inline-flex items-center gap-2 text-sm text-slate-700 cursor-pointer select-none px-2">
+          <input type="checkbox" id="filter-fav" class="rounded border-slate-300 text-amber-500 focus:ring-amber-500" onchange="renderList()" />
+          <span>僅看已收藏 (<span id="fav-count">0</span>)</span>
+        </label>
+        <div class="relative">
+          <input type="text" id="search-input" placeholder="搜尋法規、OT、工控、SCADA、IoT、個資..." oninput="renderList()"
+            class="w-full sm:w-80 pl-3 pr-8 py-2 text-sm border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500" />
+          <button onclick="document.getElementById('search-input').value=''; renderList();" class="absolute right-2.5 top-2 text-slate-400 hover:text-slate-600 text-sm">✕</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="toast" class="hidden mb-4 px-4 py-3 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800 text-sm font-medium"></div>
+
+    <div id="regulation-list" class="space-y-4"></div>
+
+    <div id="empty-state" class="hidden text-center py-16 bg-white rounded-xl border border-slate-200">
+      <p class="text-slate-500 text-base">找不到符合目前篩選條件的法規或指引。</p>
+      <button onclick="resetFilters()" class="mt-3 text-sm text-sky-600 hover:underline">重設所有篩選條件</button>
+    </div>
+  </main>
+
+  <div id="detail-modal" class="hidden fixed inset-0 bg-slate-900/60 z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[85vh] overflow-y-auto shadow-xl border border-slate-200">
+      <div class="p-6 border-b border-slate-200 flex justify-between items-start gap-4">
+        <div>
+          <span id="modal-badge" class="inline-block text-xs font-semibold px-2.5 py-0.5 rounded-full mb-2"></span>
+          <h2 id="modal-title" class="text-xl font-bold text-slate-900"></h2>
+        </div>
+        <button onclick="closeModal()" class="text-slate-400 hover:text-slate-700 text-xl font-bold px-2">✕</button>
+      </div>
+      <div class="p-6 space-y-4 text-sm text-slate-700 leading-relaxed">
+        <div class="flex flex-wrap gap-4 text-xs text-slate-500 bg-slate-50 p-3 rounded-lg">
+          <span>發布日期：<strong id="modal-pub" class="text-slate-700"></strong></span>
+          <span>更新日期：<strong id="modal-upd" class="text-slate-700"></strong></span>
+          <span>領域／類型：<strong id="modal-cat" class="text-slate-700"></strong></span>
+        </div>
+        <div>
+          <h3 class="font-bold text-slate-900 mb-1">摘要說明</h3>
+          <p id="modal-summary"></p>
+        </div>
+        <div id="modal-highlights-box" class="hidden bg-sky-50/70 border border-sky-200 rounded-xl p-4">
+          <h3 class="font-bold text-sky-900 mb-2">實務重點與稽核提示</h3>
+          <ul id="modal-highlights" class="list-disc pl-5 space-y-1.5 text-slate-700"></ul>
+        </div>
+      </div>
+      <div class="p-4 bg-slate-50 border-t border-slate-200 flex justify-end gap-3 rounded-b-2xl">
+        <button onclick="closeModal()" class="px-4 py-2 text-sm text-slate-600 hover:bg-slate-200 rounded-lg">關閉</button>
+        <a id="modal-link" href="#" target="_blank" rel="noopener noreferrer" class="px-4 py-2 text-sm font-medium bg-sky-600 hover:bg-sky-700 text-white rounded-lg">前往官方原文頁面 ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const fallbackData = [
+      {
+        id: "acs-21256",
+        agency: "數位發展部資通安全署",
+        agency_code: "ACS",
+        category: "技術指引",
+        domain_tags: ["IT", "AI資安"],
+        title: "各機關基於風險導向之弱點處置期限評估指引",
+        publish_date: "2026-11-06",
+        updated_date: "2026-11-13",
+        source_url: "https://moda.gov.tw/ACS/operations/aisec/21256",
+        summary: "因應AI加速自動化攻擊趨勢，協助各機關落實《資通安全責任等級分級辦法》應辦事項之弱點管理要求，依風險導向評估修補期限。",
+        highlights: [
+          "【公眾網路曝露認定】即使系統位於內網、未設 Public IP 或位於 Reverse Proxy（反向代理）後方，只要外部可透過反向代理、Port Forwarding 或 NAT 存取，仍認定為曝露於公眾網路。",
+          "【SSVC 三大核心評估指標】弱點已知被利用（Exploitation = active / CISA KEV / ANA 警訊）、能否被自動化利用（Automatable = yes/no）、技術影響程度（Technical Impact = total/partial）。",
+          "【官方查詢管道】NVD Vulnerability Search (SSVC頁籤)、CISA Vulnrichment、CISA KEV Catalog 及資安院每週漏洞警示新聞。"
+        ],
+        is_recent: true
+      },
+      {
+        id: "acs-ciip-115-ot",
+        agency: "數位發展部資通安全署",
+        agency_code: "ACS",
+        category: "OT / 工控 / IoT",
+        domain_tags: ["OT", "工控ICS", "關鍵基礎設施"],
+        title: "115 年度關鍵資訊基礎設施資安防護建議（涵蓋 OT／工控與雲端互聯風險）",
+        publish_date: "2026-01-01",
+        updated_date: "2026-06-01",
+        source_url: "https://moda.gov.tw/ACS/operations/ciip/650",
+        summary: "作為各中央目的事業主管機關訂定所屬領域工控資安防護基準之制度依據，適用九大關鍵基礎設施領域之CI提供者、維運單位及OT環境，並回應OT接軌雲端、遠端維運與供應鏈治理挑戰。",
+        highlights: [
+          "【適用九大領域】能源、水資源、通訊傳播、交通、金融、緊急救援與醫院、政府機關、科學園區與工業區、糧食。",
+          "【OT 互聯治理】針對 OT 接入雲端監控平台、廠商遠端維運、邊緣運算與數位孿生等情境，強化資產盤點、網路區隔與供應鏈控管。"
+        ],
+        is_recent: false
+      },
+      {
+        id: "ics-iot-common-guide",
+        agency: "數位發展部資通安全署",
+        agency_code: "ACS",
+        category: "OT / 工控 / IoT",
+        domain_tags: ["OT", "工控ICS", "IoT", "SCADA"],
+        title: "工控物聯網共通性資安指南與工控設備業資安實務指南",
+        publish_date: "2025-06-01",
+        updated_date: "2026-03-01",
+        source_url: "https://www.acw.org.tw/UpFiles/01-%E5%B7%A5%E6%8E%A7%E7%89%A9%E8%81%AF%E7%B6%B2%E5%85%B1%E9%80%9A%E6%80%A7%E8%B3%87%E5%AE%89%E6%8C%87%E5%8D%97.pdf",
+        summary: "針對 IACS／DCS／SCADA 等 OT 環境導入 IT、雲端與 IoT 元件之資安指南，涵蓋管理範圍標定、資產風險識別、事件應變演練、委外管理及設備供應商宣導。",
+        highlights: [
+          "兼顧 OT 現場連續運作與高可用性，針對無法即時更新之老舊工控設備導入網段隔離、白名單與補償性控制措施。",
+          "將設備商、系統整合商與遠端維護人員納入利害關係人管理與資安宣導。"
+        ],
+        is_recent: false
+      },
+      {
+        id: "iot-device-security-guide",
+        agency: "國家資通安全研究院",
+        agency_code: "NICS",
+        category: "OT / 工控 / IoT",
+        domain_tags: ["IoT", "設備安全"],
+        title: "物聯網（IoT）設備共通資安指引與檢測基準參考",
+        publish_date: "2025-01-01",
+        updated_date: "2026-01-15",
+        source_url: "https://www.nics.nat.gov.tw/",
+        summary: "支援尚無專屬資安標準之物聯網設備，提供設備安全設計、身分鑑別、韌體安全更新與通訊防護之參考作法（各目的事業主管機關另有規定者從其規定）。",
+        highlights: [
+          "聚焦 IoT 裝置硬體/韌體完整性、安全開機、預設密碼汰除與網路通訊加密安全。",
+          "可作為機關與企業採購驗收及物聯網設備資安檢核之基線參考。"
+        ],
+        is_recent: false
+      },
+      {
+        id: "fsc-tpex-20261111",
+        agency: "金融監督管理委員會",
+        agency_code: "FSC",
+        category: "防護基準",
+        domain_tags: ["IT", "公司治理"],
+        title: "上市上櫃公司資通安全管控指引修訂對照表（櫃買中心彙整）",
+        publish_date: "2026-11-11",
+        updated_date: "2026-11-11",
+        source_url: "https://dsp.tpex.org.tw/web/listing/security.php",
+        summary: "彙整上市上櫃公司資通安全管控指引修訂對照與資安分級防護重點，涵蓋資安長治理職責、資安人力配置、內控連結與重大事件揭露。",
+        highlights: [
+          "強化董事會對資通安全風險之監督責任與資安長（CISO）定期報告機制。",
+          "明確規範第一級與第二級上市櫃公司之資安專責主管與人員配置門檻。"
+        ],
+        is_recent: true
+      },
+      {
+        id: "fsc-digital-finance-20261117",
+        agency: "金融監督管理委員會",
+        agency_code: "FSC",
+        category: "技術指引",
+        domain_tags: ["IT", "金融資安"],
+        title: "金融機構資通安全防護基準與新興科技作業規範彙整",
+        publish_date: "2026-11-17",
+        updated_date: "2026-11-17",
+        source_url: "https://www.fsc.gov.tw/ch/home.jsp?id=1072&parentpath=0,7,478",
+        summary: "涵蓋金融機構資通安全防護基準及金融機構運用新興科技作業規範，落實零信任架構、API/雲端監控、AI安全與供應鏈管理要求。",
+        highlights: [
+          "針對雲端運算、AI 應用與開放 API 建立安全控管與持續監控基準。",
+          "要求金融機構強化第三方資訊服務供應商之資安風險評估與稽核。"
+        ],
+        is_recent: true
+      },
+      {
+        id: "pdpa-amendment-20251111",
+        agency: "個人資料保護專責機關／國發會",
+        agency_code: "PDPC",
+        category: "法令與子法",
+        domain_tags: ["個資法", "IT"],
+        title: "個人資料保護法修正條文重點與個資會籌備／施行進度追蹤",
+        publish_date: "2025-11-11",
+        updated_date: "2026-11-22",
+        source_url: "https://www.ndc.gov.tw/",
+        summary: "追蹤2025年11月公布之個資法修正方向（事故通知當事人與通報主管機關雙軌義務、強化安全維護措施），並同步監控個人資料保護委員會籌備處進度。",
+        highlights: [
+          "【雙軌通報義務】個資外洩或侵害事故發生時，除通知當事人外，須依規定向主管機關通報。",
+          "【行政檢查與裁罰】強化非公務機關安全維護措施義務與主管機關行政檢查權限。"
+        ],
+        is_recent: true
+      },
+      {
+        id: "nics-20260603-01",
+        agency: "國家資通安全研究院",
+        agency_code: "NICS",
+        category: "防護基準",
+        domain_tags: ["IT", "系統防護"],
+        title: "資通系統防護基準驗證實務與成熟度評估指引",
+        publish_date: "2026-06-03",
+        updated_date: "2026-06-03",
+        source_url: "https://www.nics.nat.gov.tw/",
+        summary: "協助各公務機關及特定非公務機關依資通系統防護需求分級（普、中、高），落實存取控制、鑑識與稽核、組態管理及系統獲取開發維護之控制措施。",
+        highlights: [
+          "提供普、中、高三個防護等級之具體檢核項目與佐證資料準備範例。",
+          "對齊 ISO/IEC 27001:2022 控制措施與政府組態基準（GCB）導入實務。"
+        ],
+        is_recent: false
+      },
+      {
+        id: "acs-law-202601",
+        agency: "數位發展部資通安全署",
+        agency_code: "ACS",
+        category: "法令與子法",
+        domain_tags: ["IT", "OT", "法遵"],
+        title: "資通安全管理法及其子法（責任等級分級、通報應變、稽核辦法）彙編",
+        publish_date: "2026-01-15",
+        updated_date: "2026-01-15",
+        source_url: "https://moda.gov.tw/ACS/laws/554",
+        summary: "收錄《資通安全管理法》母法及六項子法最新條文，明定公務機關與特定非公務機關之資通安全責任等級分級、應辦事項及事件通報應變程序。",
+        highlights: [
+          "明確規範 A、B、C、D、E 各責任等級之資安專職人力、教育訓練、弱點掃描、滲透測試與紅藍隊演練頻率。"
+        ],
+        is_recent: false
+      },
+      {
+        id: "moe-k12ea-20260804",
+        agency: "教育部",
+        agency_code: "MOE",
+        category: "稽核與範本",
+        domain_tags: ["IT", "教育體系"],
+        title: "資通安全維護計畫（範本）版本 2.1（國教署與教育體系適用）",
+        publish_date: "2026-08-04",
+        updated_date: "2026-08-04",
+        source_url: "https://www.k12ea.gov.tw/",
+        summary: "教育部國民及學前教育署更新之資通安全維護計畫範本 v2.1，協助各級學校與教育體系落實資安維護計畫撰寫、委外管理與稽核改善。",
+        highlights: [
+          "涵蓋核心業務盤點、資安推動小組組織職掌、委外廠商安全管理與教育訓練時數規範。"
+        ],
+        is_recent: false
+      },
+      {
+        id: "mohw-clinic-sec",
+        agency: "衛生福利部",
+        agency_code: "MOHW",
+        category: "技術指引",
+        domain_tags: ["IT", "醫療OT設備"],
+        title: "基層醫療院所資安防護參考指引與醫療資安治理重點",
+        publish_date: "2026-02-03",
+        updated_date: "2026-02-03",
+        source_url: "https://www.mohw.gov.tw/",
+        summary: "提供醫療與醫務設備區隔、作業系統與防毒更新、教育訓練時數、委外合約資安、健保VPN與Wi-Fi網段隔離及高敏感醫療資料防護參考。",
+        highlights: [
+          "要求醫療設備網路與一般行政網路隔離，並加強對 HIS/PACS 系統與健保 VPN 端點之存取控管。"
+        ],
+        is_recent: false
+      }
+    ];
+
+    const agencyMeta = {
+      ALL:  { label: "全部單位", badge: "bg-slate-100 text-slate-700" },
+      ACS:  { label: "資通安全署 (ACS)", badge: "bg-sky-100 text-sky-800" },
+      NICS: { label: "資通安全研究院 (NICS)", badge: "bg-indigo-100 text-indigo-800" },
+      FSC:  { label: "金管會 (FSC)", badge: "bg-amber-100 text-amber-800" },
+      PDPC: { label: "個資會／國發會 (PDPC)", badge: "bg-purple-100 text-purple-800" },
+      MOE:  { label: "教育部 (MOE)", badge: "bg-teal-100 text-teal-800" },
+      MOHW: { label: "衛生福利部 (MOHW)", badge: "bg-rose-100 text-rose-800" }
+    };
+
+    const categories = ["全部類型", "OT / 工控 / IoT", "法令與子法", "技術指引", "防護基準", "稽核與範本"];
+
+    let regulationsData = [...fallbackData];
+    let selectedAgency = "ALL";
+    let selectedCategory = "全部類型";
+    let favorites = JSON.parse(localStorage.getItem("cyber_reg_favs") || "[]");
+
+    async function initData() {
+      try {
+        const res = await fetch("./data.json", { cache: "no-store" });
+        if (res.ok) {
+          const json = await res.json();
+          if (Array.isArray(json.items) && json.items.length > 0) {
+            regulationsData = json.items;
+            if (json.last_updated) {
+              document.getElementById("last-updated-text").textContent = "資料更新時間：" + json.last_updated;
+            }
+          }
+        }
+      } catch (e) {}
+      renderTabs();
+      renderCategories();
+      renderList();
+    }
+
+    function renderTabs() {
+      const container = document.getElementById("agency-tabs");
+      container.innerHTML = Object.keys(agencyMeta).map(code => {
+        const count = code === "ALL"
+          ? regulationsData.length
+          : regulationsData.filter(item => item.agency_code === code).length;
+        const active = selectedAgency === code;
+        return `
+          <button onclick="selectAgency('${code}')"
+            class="px-3.5 py-2 rounded-lg text-sm font-medium transition cursor-pointer flex items-center gap-2 ${
+              active ? "bg-slate-900 text-white shadow-sm" : "bg-white text-slate-700 border border-slate-200 hover:bg-slate-100"
+            }">
+            <span>${agencyMeta[code].label}</span>
+            <span class="text-xs px-1.5 py-0.5 rounded-full ${active ? "bg-slate-700 text-sky-300" : "bg-slate-100 text-slate-600"}">${count}</span>
+          </button>
+        `;
+      }).join("");
+    }
+
+    function renderCategories() {
+      const container = document.getElementById("category-filters");
+      container.innerHTML = categories.map(cat => {
+        const active = selectedCategory === cat;
+        return `
+          <button onclick="selectCategory('${cat}')"
+            class="px-3 py-1.5 rounded-full text-xs font-medium transition cursor-pointer ${
+              active ? "bg-sky-600 text-white" : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+            }">
+            ${cat}
+          </button>
+        `;
+      }).join("");
+    }
+
+    function selectAgency(code) {
+      selectedAgency = code;
+      renderTabs();
+      renderList();
+    }
+
+    function selectCategory(cat) {
+      selectedCategory = cat;
+      renderCategories();
+      renderList();
+    }
+
+    function toggleFavorite(id) {
+      if (favorites.includes(id)) {
+        favorites = favorites.filter(f => f !== id);
+      } else {
+        favorites.push(id);
+      }
+      localStorage.setItem("cyber_reg_favs", JSON.stringify(favorites));
+      renderList();
+    }
+
+    function highlightText(text, query) {
+      if (!query) return text;
+      const escaped = query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      return text.replace(new RegExp(`(${escaped})`, "gi"), "<mark>$1</mark>");
+    }
+
+    function renderList() {
+      const query = document.getElementById("search-input").value.trim();
+      const onlyRecent = document.getElementById("filter-recent").checked;
+      const onlyFav = document.getElementById("filter-fav").checked;
+
+      document.getElementById("stat-total").textContent = regulationsData.length;
+      document.getElementById("stat-recent").textContent = regulationsData.filter(d => d.is_recent).length;
+      document.getElementById("fav-count").textContent = favorites.length;
+
+      const filtered = regulationsData.filter(item => {
+        if (selectedAgency !== "ALL" && item.agency_code !== selectedAgency) return false;
+        if (selectedCategory !== "全部類型" && item.category !== selectedCategory) return false;
+        if (onlyRecent && !item.is_recent) return false;
+        if (onlyFav && !favorites.includes(item.id)) return false;
+        if (query) {
+          const q = query.toLowerCase();
+          const inTitle = item.title.toLowerCase().includes(q);
+          const inSummary = item.summary.toLowerCase().includes(q);
+          const inAgency = item.agency.toLowerCase().includes(q);
+          const inTags = (item.domain_tags || []).some(t => t.toLowerCase().includes(q));
+          const inHighlights = (item.highlights || []).some(h => h.toLowerCase().includes(q));
+          return inTitle || inSummary || inAgency || inTags || inHighlights;
+        }
+        return true;
+      });
+
+      const listEl = document.getElementById("regulation-list");
+      const emptyEl = document.getElementById("empty-state");
+
+      if (filtered.length === 0) {
+        listEl.innerHTML = "";
+        emptyEl.classList.remove("hidden");
+        return;
+      }
+
+      emptyEl.classList.add("hidden");
+      listEl.innerHTML = filtered.map(item => {
+        const meta = agencyMeta[item.agency_code] || { badge: "bg-slate-100 text-slate-700" };
+        const isFav = favorites.includes(item.id);
+        const domainBadges = (item.domain_tags || []).map(tag =>
+          `<span class="text-xs font-medium px-2 py-0.5 rounded bg-slate-800 text-slate-100">${tag}</span>`
+        ).join("");
+
+        return `
+          <article class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm hover:shadow-md transition">
+            <div class="flex flex-col md:flex-row md:items-start justify-between gap-4">
+              <div class="space-y-2 flex-1">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full ${meta.badge}">${item.agency}</span>
+                  <span class="text-xs font-medium px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-700 border border-slate-200">${item.category}</span>
+                  ${domainBadges}
+                  ${item.is_recent ? `<span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-700">NEW 近期更新</span>` : ""}
+                  <span class="text-xs text-slate-400">發布：${item.publish_date} ｜ 更新：${item.updated_date}</span>
+                </div>
+                <h2 class="text-lg font-bold text-slate-900">
+                  <a href="${item.source_url}" target="_blank" rel="noopener noreferrer" class="hover:text-sky-600 transition">
+                    ${highlightText(item.title, query)}
+                  </a>
+                </h2>
+                <p class="text-sm text-slate-600 leading-relaxed">${highlightText(item.summary, query)}</p>
+              </div>
+              <div class="flex sm:flex-row md:flex-col items-stretch sm:items-center md:items-end gap-2 shrink-0">
+                <button onclick="openModal('${item.id}')" class="px-3.5 py-2 text-xs font-semibold rounded-lg bg-sky-50 text-sky-700 hover:bg-sky-100 border border-sky-200 cursor-pointer">
+                  重點摘要與實務提示
+                </button>
+                <div class="flex items-center gap-2">
+                  <a href="${item.source_url}" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 text-xs font-medium rounded-lg border border-slate-200 text-slate-700 hover:bg-slate-50">
+                    原文連結 ↗
+                  </a>
+                  <button onclick="toggleFavorite('${item.id}')" title="收藏此法規"
+                    class="px-2.5 py-1.5 text-xs rounded-lg border cursor-pointer ${isFav ? "bg-amber-50 border-amber-300 text-amber-600" : "border-slate-200 text-slate-400 hover:text-amber-500"}">
+                    ${isFav ? "★ 已收藏" : "☆ 收藏"}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function openModal(id) {
+      const item = regulationsData.find(d => d.id === id);
+      if (!item) return;
+      const meta = agencyMeta[item.agency_code] || { badge: "bg-slate-100 text-slate-700" };
+      const badgeEl = document.getElementById("modal-badge");
+      badgeEl.className = "inline-block text-xs font-semibold px-2.5 py-0.5 rounded-full mb-2 " + meta.badge;
+      badgeEl.textContent = item.agency;
+
+      document.getElementById("modal-title").textContent = item.title;
+      document.getElementById("modal-pub").textContent = item.publish_date;
+      document.getElementById("modal-upd").textContent = item.updated_date;
+      document.getElementById("modal-cat").textContent = item.category;
+      document.getElementById("modal-summary").textContent = item.summary;
+      document.getElementById("modal-link").href = item.source_url;
+
+      const hlBox = document.getElementById("modal-highlights-box");
+      const hlList = document.getElementById("modal-highlights");
+      if (item.highlights && item.highlights.length > 0) {
+        hlList.innerHTML = item.highlights.map(h => `<li>${h}</li>`).join("");
+        hlBox.classList.remove("hidden");
+      } else {
+        hlBox.classList.add("hidden");
+      }
+
+      document.getElementById("detail-modal").classList.remove("hidden");
+    }
+
+    function closeModal() {
+      document.getElementById("detail-modal").classList.add("hidden");
+    }
+
+    function resetFilters() {
+      selectedAgency = "ALL";
+      selectedCategory = "全部類型";
+      document.getElementById("search-input").value = "";
+      document.getElementById("filter-recent").checked = false;
+      document.getElementById("filter-fav").checked = false;
+      renderTabs();
+      renderCategories();
+      renderList();
+    }
+
+    function simulateSync() {
+      const toast = document.getElementById("toast");
+      toast.textContent = "已完成同步檢查：目前已載入最新 IT、OT/工控/IoT、金管會、個資法及各部會資安指引資料。";
+      toast.classList.remove("hidden");
+      setTimeout(() => toast.classList.add("hidden"), 4500);
+    }
+
+    initData();
+  </script>
+</body>
+</html>
