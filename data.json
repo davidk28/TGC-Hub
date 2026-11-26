@@ -1,12 +1,16 @@
 {
-  "last_updated": "2026-11-26 14:40",
+  "last_updated": "2026-11-26 15:30",
   "items": [
     {
       "id": "acs-21256",
       "agency": "數位發展部資通安全署",
       "agency_code": "ACS",
       "category": "技術指引",
-      "domain_tags": ["IT", "AI資安", "弱點管理"],
+      "domain_tags": [
+        "IT",
+        "AI資安",
+        "弱點管理"
+      ],
       "is_agency_self_defined": false,
       "title": "各機關基於風險導向之弱點處置期限評估指引",
       "publish_date": "2026-11-06",
@@ -25,7 +29,12 @@
       "agency": "數位發展部資通安全署",
       "agency_code": "ACS",
       "category": "法令與子法",
-      "domain_tags": ["IT", "OT", "資安法", "法遵"],
+      "domain_tags": [
+        "IT",
+        "OT",
+        "資安法",
+        "法遵"
+      ],
       "is_agency_self_defined": false,
       "title": "資通安全管理法施行細則及資通安全責任等級分級辦法（2026年1月修正）",
       "publish_date": "2026-01-05",
@@ -43,7 +52,11 @@
       "agency": "數位發展部資通安全署",
       "agency_code": "ACS",
       "category": "OT / 工控 / IoT",
-      "domain_tags": ["OT", "工控ICS", "關鍵基礎設施"],
+      "domain_tags": [
+        "OT",
+        "工控ICS",
+        "關鍵基礎設施"
+      ],
       "is_agency_self_defined": false,
       "title": "115 年度關鍵資訊基礎設施資安防護建議（涵蓋 OT／工控與雲端互聯風險）",
       "publish_date": "2026-01-01",
@@ -61,7 +74,12 @@
       "agency": "數位發展部資通安全署",
       "agency_code": "ACS",
       "category": "OT / 工控 / IoT",
-      "domain_tags": ["OT", "工控ICS", "IoT", "SCADA"],
+      "domain_tags": [
+        "OT",
+        "工控ICS",
+        "IoT",
+        "SCADA"
+      ],
       "is_agency_self_defined": false,
       "title": "工控物聯網共通性資安指南與工控設備業資安實務指南",
       "publish_date": "2025-06-01",
@@ -79,7 +97,10 @@
       "agency": "國家資通安全研究院",
       "agency_code": "NICS",
       "category": "OT / 工控 / IoT",
-      "domain_tags": ["IoT", "設備安全"],
+      "domain_tags": [
+        "IoT",
+        "設備安全"
+      ],
       "is_agency_self_defined": false,
       "title": "物聯網（IoT）設備共通資安指引與檢測基準參考",
       "publish_date": "2025-01-01",
@@ -97,7 +118,10 @@
       "agency": "國家資通安全研究院",
       "agency_code": "NICS",
       "category": "防護基準",
-      "domain_tags": ["IT", "系統防護"],
+      "domain_tags": [
+        "IT",
+        "系統防護"
+      ],
       "is_agency_self_defined": false,
       "title": "資通系統防護基準驗證實務與成熟度評估指引",
       "publish_date": "2026-06-03",
@@ -115,7 +139,11 @@
       "agency": "金融監督管理委員會",
       "agency_code": "FSC",
       "category": "防護基準",
-      "domain_tags": ["IT", "公司治理", "法遵"],
+      "domain_tags": [
+        "IT",
+        "公司治理",
+        "法遵"
+      ],
       "is_agency_self_defined": false,
       "title": "上市上櫃公司資通安全管控指引修訂對照表（櫃買中心彙整）",
       "publish_date": "2026-11-11",
@@ -133,7 +161,11 @@
       "agency": "金融監督管理委員會",
       "agency_code": "FSC",
       "category": "技術指引",
-      "domain_tags": ["IT", "金融資安", "AI資安"],
+      "domain_tags": [
+        "IT",
+        "金融資安",
+        "AI資安"
+      ],
       "is_agency_self_defined": false,
       "title": "金融機構資通安全防護基準與新興科技作業規範彙整",
       "publish_date": "2026-11-17",
@@ -151,7 +183,11 @@
       "agency": "個人資料保護專責機關／國發會",
       "agency_code": "PDPC",
       "category": "法令與子法",
-      "domain_tags": ["個資法", "IT", "法遵"],
+      "domain_tags": [
+        "個資法",
+        "IT",
+        "法遵"
+      ],
       "is_agency_self_defined": false,
       "title": "個人資料保護法修正條文重點與個資會籌備處法規預告動態",
       "publish_date": "2025-11-11",
@@ -169,7 +205,11 @@
       "agency": "個人資料保護專責機關／國發會",
       "agency_code": "PDPC",
       "category": "稽核與範本",
-      "domain_tags": ["個資法", "安維計畫", "法遵"],
+      "domain_tags": [
+        "個資法",
+        "安維計畫",
+        "法遵"
+      ],
       "is_agency_self_defined": false,
       "title": "個人資料檔案安全維護計畫與適當安全維護措施（施行細則第12條／第8條）",
       "publish_date": "2024-01-12",
@@ -187,7 +227,10 @@
       "agency": "教育部",
       "agency_code": "MOE",
       "category": "稽核與範本",
-      "domain_tags": ["IT", "教育體系"],
+      "domain_tags": [
+        "IT",
+        "教育體系"
+      ],
       "is_agency_self_defined": true,
       "title": "資通安全維護計畫（範本）版本 2.1（國教署與教育體系適用）",
       "publish_date": "2026-08-04",
@@ -204,7 +247,11 @@
       "agency": "衛生福利部",
       "agency_code": "MOHW",
       "category": "技術指引",
-      "domain_tags": ["IT", "醫療OT設備", "IoT"],
+      "domain_tags": [
+        "IT",
+        "醫療OT設備",
+        "IoT"
+      ],
       "is_agency_self_defined": true,
       "title": "基層醫療院所資安防護參考指引與醫療資安治理重點",
       "publish_date": "2026-02-03",
@@ -221,7 +268,10 @@
       "agency": "數位發展部",
       "agency_code": "MODA",
       "category": "法令與子法",
-      "domain_tags": ["電子簽章", "法遵"],
+      "domain_tags": [
+        "電子簽章",
+        "法遵"
+      ],
       "is_agency_self_defined": false,
       "title": "電子簽章法（發行/修訂：113.05.15）",
       "publish_date": "2024-05-15",
@@ -239,7 +289,10 @@
       "agency": "數位發展部",
       "agency_code": "MODA",
       "category": "法令與子法",
-      "domain_tags": ["電子簽章", "法遵"],
+      "domain_tags": [
+        "電子簽章",
+        "法遵"
+      ],
       "is_agency_self_defined": false,
       "title": "電子簽章法施行細則（發行/修訂：113.11.14）",
       "publish_date": "2024-11-14",
@@ -256,7 +309,11 @@
       "agency": "法務部",
       "agency_code": "MOJ",
       "category": "法令與子法",
-      "domain_tags": ["國家機密", "機敏資訊", "法遵"],
+      "domain_tags": [
+        "國家機密",
+        "機敏資訊",
+        "法遵"
+      ],
       "is_agency_self_defined": false,
       "title": "國家機密保護法及施行細則（112.12.27 / 114.10.27）",
       "publish_date": "2023-12-27",
@@ -273,7 +330,11 @@
       "agency": "經濟部智慧財產局",
       "agency_code": "TIPO",
       "category": "法令與子法",
-      "domain_tags": ["著作權", "軟體授權", "法遵"],
+      "domain_tags": [
+        "著作權",
+        "軟體授權",
+        "法遵"
+      ],
       "is_agency_self_defined": false,
       "title": "著作權法（發行/修訂：111.06.15）",
       "publish_date": "2022-06-15",
@@ -291,7 +352,10 @@
       "agency": "法務部",
       "agency_code": "MOJ",
       "category": "法令與子法",
-      "domain_tags": ["妨害電腦使用罪", "法遵"],
+      "domain_tags": [
+        "妨害電腦使用罪",
+        "法遵"
+      ],
       "is_agency_self_defined": false,
       "title": "刑法第三十六章 妨害電腦使用罪（發行/修訂：114.08.01）",
       "publish_date": "2025-08-01",
@@ -309,7 +373,10 @@
       "agency": "國家發展委員會檔案管理局／行政院",
       "agency_code": "NAA_DOCS",
       "category": "稽核與範本",
-      "domain_tags": ["文書檔案", "電子儲存"],
+      "domain_tags": [
+        "文書檔案",
+        "電子儲存"
+      ],
       "is_agency_self_defined": true,
       "title": "文書及檔案管理法規彙編（檔案法施行細則、電子儲存、文書處理手冊等）",
       "publish_date": "2023-09-01",
@@ -327,7 +394,10 @@
       "agency": "銓敘部",
       "agency_code": "MND_OTHER",
       "category": "法令與子法",
-      "domain_tags": ["人事任用", "法遵"],
+      "domain_tags": [
+        "人事任用",
+        "法遵"
+      ],
       "is_agency_self_defined": false,
       "title": "公務人員任用法（發行/修訂：114.08.01）",
       "publish_date": "2025-08-01",
@@ -344,7 +414,10 @@
       "agency": "環境部",
       "agency_code": "MOENV",
       "category": "法令與子法",
-      "domain_tags": ["氣候變遷", "永續治理"],
+      "domain_tags": [
+        "氣候變遷",
+        "永續治理"
+      ],
       "is_agency_self_defined": false,
       "title": "氣候變遷因應法（發行/修訂：112.02.15）",
       "publish_date": "2023-02-15",
@@ -361,7 +434,10 @@
       "agency": "法務部",
       "agency_code": "MOJ",
       "category": "稽核與範本",
-      "domain_tags": ["書類公開", "法遵"],
+      "domain_tags": [
+        "書類公開",
+        "法遵"
+      ],
       "is_agency_self_defined": true,
       "title": "檢察機關書類公開應行注意事項（發行/修訂：107.08.28）",
       "publish_date": "2018-08-28",
@@ -375,6 +451,9 @@
     }
   ]
 }
-```[cite: 9, 10]
+```[cite: 10]
 
-另外提醒一下：剛才在您瀏覽的 [台灣政府資安、工控OT與個資法規指引彙整中心](https://davidk28.github.io/TGC-Hub/) 畫面上，同時勾選／點了「資通安全署 (ACS)」與領域標籤「個資法」，因為該筆資料的發布單位是「個人資料保護專責機關／國發會 (PDPC)」而非「資通安全署 (ACS)」，所以交集會顯示 0 筆；更新完 `index.html` 與 `data.json` 後，點選「顯示全部單位、類型與領域」即可看到所有符合條件的項目[cite: 10]。
+<ElicitationsGroup message="如果重跑 Action 後仍有問題，可以點選以下選項：">
+  <Elicitation label="仍出現 JSONDecodeError" query="我已經更新了 data.json 並重跑 Action，但還是出現 JSON 解析錯誤，該怎麼辦？"/>
+  <Elicitation label="Action 權限或推送失敗" query="scraper.py 執行成功了，但在 Commit and push updated data.json 時出現權限或推送錯誤，該怎麼解決？"/>
+</ElicitationsGroup>
