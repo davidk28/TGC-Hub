@@ -19,10 +19,10 @@
           <div class="flex items-center gap-2 text-xs text-sky-400 font-semibold tracking-wider uppercase mb-1">
             <span>Taiwan IT / OT / ICS / IoT & Privacy Hub</span>
             <span>•</span>
-            <span id="last-updated-text">資料更新時間：2026-11-25 15:20</span>
+            <span id="last-updated-text">資料更新時間：2026-11-26 14:23</span>
           </div>
           <h1 class="text-2xl sm:text-3xl font-bold tracking-tight">台灣政府資安、工控OT與個資法規指引彙整中心</h1>
-          <p class="text-slate-300 text-sm mt-1">涵蓋資安署、資安院、金管會、個資會籌備處/國發會、教育部與衛福部之 IT、OT、工控、IoT 與個資法規</p>
+          <p class="text-slate-300 text-sm mt-1">涵蓋資安署、資安院、金管會、個資會籌備處/國發會、教育部、衛福部及相關治理外來文件</p>
         </div>
         <div class="flex items-center gap-3">
           <div class="bg-slate-800 border border-slate-700 rounded-lg px-4 py-2 text-center">
@@ -43,25 +43,37 @@
   </header>
 
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <!-- 發布單位分頁標籤 -->
     <div id="agency-tabs" class="flex flex-wrap gap-2 pb-4 border-b border-slate-200 mb-5"></div>
 
-    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 mb-6 flex flex-col lg:flex-row gap-4 justify-between items-stretch lg:items-center">
-      <div id="category-filters" class="flex flex-wrap gap-2"></div>
+    <!-- 篩選與搜尋工具列 -->
+    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 mb-6 space-y-4">
+      <div class="flex flex-col lg:flex-row gap-4 justify-between items-stretch lg:items-center">
+        <!-- 文件類型篩選 -->
+        <div id="category-filters" class="flex flex-wrap gap-2"></div>
 
-      <div class="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center">
-        <label class="inline-flex items-center gap-2 text-sm text-slate-700 cursor-pointer select-none px-2">
-          <input type="checkbox" id="filter-recent" class="rounded border-slate-300 text-sky-600 focus:ring-sky-500" onchange="renderList()" />
-          <span>僅看近期更新</span>
-        </label>
-        <label class="inline-flex items-center gap-2 text-sm text-slate-700 cursor-pointer select-none px-2">
-          <input type="checkbox" id="filter-fav" class="rounded border-slate-300 text-amber-500 focus:ring-amber-500" onchange="renderList()" />
-          <span>僅看已收藏 (<span id="fav-count">0</span>)</span>
-        </label>
-        <div class="relative">
-          <input type="text" id="search-input" placeholder="搜尋法規、OT、工控、SCADA、IoT、個資..." oninput="renderList()"
-            class="w-full sm:w-80 pl-3 pr-8 py-2 text-sm border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500" />
-          <button onclick="document.getElementById('search-input').value=''; renderList();" class="absolute right-2.5 top-2 text-slate-400 hover:text-slate-600 text-sm">✕</button>
+        <!-- 搜尋框與開關 -->
+        <div class="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center">
+          <label class="inline-flex items-center gap-2 text-sm text-slate-700 cursor-pointer select-none px-2">
+            <input type="checkbox" id="filter-recent" class="rounded border-slate-300 text-sky-600 focus:ring-sky-500" onchange="renderList()" />
+            <span>僅看近期更新</span>
+          </label>
+          <label class="inline-flex items-center gap-2 text-sm text-slate-700 cursor-pointer select-none px-2">
+            <input type="checkbox" id="filter-fav" class="rounded border-slate-300 text-amber-500 focus:ring-amber-500" onchange="renderList()" />
+            <span>僅看已收藏 (<span id="fav-count">0</span>)</span>
+          </label>
+          <div class="relative">
+            <input type="text" id="search-input" placeholder="支援多詞與別名搜尋（如：個資、工控、弱點、檔案）..." oninput="renderList()"
+              class="w-full sm:w-88 pl-3 pr-8 py-2 text-sm border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500" />
+            <button onclick="document.getElementById('search-input').value=''; renderList();" class="absolute right-2.5 top-2 text-slate-400 hover:text-slate-600 text-sm cursor-pointer">✕</button>
+          </div>
         </div>
+      </div>
+
+      <!-- 領域標籤快速篩選 -->
+      <div class="pt-3 border-t border-slate-100 flex flex-wrap items-center gap-2">
+        <span class="text-xs font-semibold text-slate-500 mr-1">領域快速標籤：</span>
+        <div id="domain-filters" class="flex flex-wrap gap-1.5"></div>
       </div>
     </div>
 
@@ -69,14 +81,14 @@
 
     <div class="mb-3 flex items-center justify-between text-xs text-slate-500">
       <span id="result-summary">顯示全部資料</span>
-      <button onclick="resetFilters()" class="text-sky-600 hover:underline cursor-pointer">顯示全部單位與類型</button>
+      <button onclick="resetFilters()" class="text-sky-600 hover:underline cursor-pointer">顯示全部單位、類型與領域</button>
     </div>
 
     <div id="regulation-list" class="space-y-4"></div>
 
     <div id="empty-state" class="hidden text-center py-16 bg-white rounded-xl border border-slate-200">
       <p class="text-slate-500 text-base">找不到符合目前篩選條件的法規或指引。</p>
-      <button onclick="resetFilters()" class="mt-3 text-sm text-sky-600 hover:underline">重設所有篩選條件</button>
+      <button onclick="resetFilters()" class="mt-3 text-sm text-sky-600 hover:underline cursor-pointer">重設所有篩選條件</button>
     </div>
   </main>
 
@@ -87,7 +99,7 @@
           <span id="modal-badge" class="inline-block text-xs font-semibold px-2.5 py-0.5 rounded-full mb-2"></span>
           <h2 id="modal-title" class="text-xl font-bold text-slate-900"></h2>
         </div>
-        <button onclick="closeModal()" class="text-slate-400 hover:text-slate-700 text-xl font-bold px-2">✕</button>
+        <button onclick="closeModal()" class="text-slate-400 hover:text-slate-700 text-xl font-bold px-2 cursor-pointer">✕</button>
       </div>
       <div class="p-6 space-y-4 text-sm text-slate-700 leading-relaxed">
         <div class="flex flex-wrap gap-4 text-xs text-slate-500 bg-slate-50 p-3 rounded-lg">
@@ -105,7 +117,7 @@
         </div>
       </div>
       <div class="p-4 bg-slate-50 border-t border-slate-200 flex justify-end gap-3 rounded-b-2xl">
-        <button onclick="closeModal()" class="px-4 py-2 text-sm text-slate-600 hover:bg-slate-200 rounded-lg">關閉</button>
+        <button onclick="closeModal()" class="px-4 py-2 text-sm text-slate-600 hover:bg-slate-200 rounded-lg cursor-pointer">關閉</button>
         <a id="modal-link" href="#" target="_blank" rel="noopener noreferrer" class="px-4 py-2 text-sm font-medium bg-sky-600 hover:bg-sky-700 text-white rounded-lg">前往官方原文頁面 ↗</a>
       </div>
     </div>
@@ -118,7 +130,7 @@
         agency: "數位發展部資通安全署",
         agency_code: "ACS",
         category: "技術指引",
-        domain_tags: ["IT", "AI資安"],
+        domain_tags: ["IT", "AI資安", "弱點管理"],
         title: "各機關基於風險導向之弱點處置期限評估指引",
         publish_date: "2026-11-06",
         updated_date: "2026-11-13",
@@ -136,7 +148,7 @@
         agency: "數位發展部資通安全署",
         agency_code: "ACS",
         category: "法令與子法",
-        domain_tags: ["IT", "OT", "資安法"],
+        domain_tags: ["IT", "OT", "資安法", "法遵"],
         title: "資通安全管理法施行細則及資通安全責任等級分級辦法（2026年1月修正）",
         publish_date: "2026-01-05",
         updated_date: "2026-01-09",
@@ -221,7 +233,7 @@
         agency: "金融監督管理委員會",
         agency_code: "FSC",
         category: "防護基準",
-        domain_tags: ["IT", "公司治理"],
+        domain_tags: ["IT", "公司治理", "法遵"],
         title: "上市上櫃公司資通安全管控指引修訂對照表（櫃買中心彙整）",
         publish_date: "2026-11-11",
         updated_date: "2026-11-11",
@@ -238,7 +250,7 @@
         agency: "金融監督管理委員會",
         agency_code: "FSC",
         category: "技術指引",
-        domain_tags: ["IT", "金融資安"],
+        domain_tags: ["IT", "金融資安", "AI資安"],
         title: "金融機構資通安全防護基準與新興科技作業規範彙整",
         publish_date: "2026-11-17",
         updated_date: "2026-11-17",
@@ -255,7 +267,7 @@
         agency: "個人資料保護專責機關／國發會",
         agency_code: "PDPC",
         category: "法令與子法",
-        domain_tags: ["個資法", "IT"],
+        domain_tags: ["個資法", "IT", "法遵"],
         title: "個人資料保護法修正條文重點與個資會籌備處法規預告動態",
         publish_date: "2025-11-11",
         updated_date: "2026-11-24",
@@ -272,7 +284,7 @@
         agency: "個人資料保護專責機關／國發會",
         agency_code: "PDPC",
         category: "稽核與範本",
-        domain_tags: ["個資法", "安維計畫"],
+        domain_tags: ["個資法", "安維計畫", "法遵"],
         title: "個人資料檔案安全維護計畫與適當安全維護措施（施行細則第12條／第8條）",
         publish_date: "2024-01-12",
         updated_date: "2026-04-02",
@@ -305,7 +317,7 @@
         agency: "衛生福利部",
         agency_code: "MOHW",
         category: "技術指引",
-        domain_tags: ["IT", "醫療OT設備"],
+        domain_tags: ["IT", "醫療OT設備", "IoT"],
         title: "基層醫療院所資安防護參考指引與醫療資安治理重點",
         publish_date: "2026-02-03",
         updated_date: "2026-02-03",
@@ -315,24 +327,195 @@
           "要求醫療設備網路與一般行政網路隔離，並加強對 HIS/PACS 系統與健保 VPN 端點之存取控管。"
         ],
         is_recent: false
+      },
+      {
+        id: "isms-01-esign-law",
+        agency: "數位發展部",
+        agency_code: "MODA",
+        category: "法令與子法",
+        domain_tags: ["電子簽章", "法遵"],
+        title: "電子簽章法（發行/修訂：113.05.15）",
+        publish_date: "2024-05-15",
+        updated_date: "2024-05-15",
+        source_url: "https://law.moj.gov.tw/",
+        summary: "源自《外來文件一覽表》（序號 1）：規範電子文件與電子簽章之效力、憑證與數位簽章應用，屬數位治理與資訊交換相關法規。",
+        highlights: [
+          "發行單位：數位發展部（表列日期：113.05.15）。",
+          "與電子文件身分確認、不可否認性及數位化流程合規相關。"
+        ],
+        is_recent: false
+      },
+      {
+        id: "isms-02-esign-rules",
+        agency: "數位發展部",
+        agency_code: "MODA",
+        category: "法令與子法",
+        domain_tags: ["電子簽章", "法遵"],
+        title: "電子簽章法施行細則（發行/修訂：113.11.14）",
+        publish_date: "2024-11-14",
+        updated_date: "2024-11-14",
+        source_url: "https://law.moj.gov.tw/",
+        summary: "源自《外來文件一覽表》（序號 2）：明定《電子簽章法》執行細節與相關作業規定。",
+        highlights: [
+          "發行單位：數位發展部（表列日期：113.11.14）。"
+        ],
+        is_recent: false
+      },
+      {
+        id: "isms-05-06-state-secret",
+        agency: "法務部",
+        agency_code: "MOJ",
+        category: "法令與子法",
+        domain_tags: ["國家機密", "機敏資訊", "法遵"],
+        title: "國家機密保護法及施行細則（112.12.27 / 114.10.27）",
+        publish_date: "2023-12-27",
+        updated_date: "2025-10-27",
+        source_url: "https://law.moj.gov.tw/",
+        summary: "源自《外來文件一覽表》（序號 5、6）：規範國家機密核定、維護、保密措施及施行細則，與機密資訊保護及存取控管高度相關。",
+        highlights: [
+          "發行單位：法務部（國家機密保護法 112.12.27、施行細則 114.10.27）。"
+        ],
+        is_recent: false
+      },
+      {
+        id: "isms-07-copyright",
+        agency: "經濟部智慧財產局",
+        agency_code: "TIPO",
+        category: "法令與子法",
+        domain_tags: ["著作權", "軟體授權", "法遵"],
+        title: "著作權法（發行/修訂：111.06.15）",
+        publish_date: "2022-06-15",
+        updated_date: "2022-06-15",
+        source_url: "https://www.tipo.gov.tw/",
+        summary: "源自《外來文件一覽表》（序號 7）：涉及軟體授權、數位內容重製與散布、智慧財產權管理及內部合法使用查核。",
+        highlights: [
+          "發行單位：經濟部智慧財產局（表列日期：111.06.15）。",
+          "機關與企業軟體資產盤點及合法授權稽核之重要法源依據。"
+        ],
+        is_recent: false
+      },
+      {
+        id: "isms-09-criminal-computer",
+        agency: "法務部",
+        agency_code: "MOJ",
+        category: "法令與子法",
+        domain_tags: ["妨害電腦使用罪", "法遵"],
+        title: "刑法第三十六章 妨害電腦使用罪（發行/修訂：114.08.01）",
+        publish_date: "2025-08-01",
+        updated_date: "2025-08-01",
+        source_url: "https://law.moj.gov.tw/",
+        summary: "源自《外來文件一覽表》（序號 9）：規範無故入侵電腦或其相關設備、干擾電磁紀錄與電腦系統運作之刑事責任。",
+        highlights: [
+          "發行單位：法務部（表列日期：114.08.01）。",
+          "與事件鑑識、違規行為追查及內部人員行為規範相關。"
+        ],
+        is_recent: false
+      },
+      {
+        id: "isms-11-21-archives-docs",
+        agency: "國家發展委員會檔案管理局／行政院",
+        agency_code: "NAA_DOCS",
+        category: "稽核與範本",
+        domain_tags: ["文書檔案", "電子儲存"],
+        title: "文書及檔案管理法規彙編（檔案法施行細則、電子儲存、文書處理手冊等）",
+        publish_date: "2023-09-01",
+        updated_date: "2025-11-26",
+        source_url: "https://www.archives.gov.tw/",
+        summary: "源自《外來文件一覽表》（序號 11～21）：涵蓋檔案電子儲存管理實施辦法、檔案法施行細則、機關檔案保存年限及銷毀辦法、文書流程管理作業規範、公文電子交換系統資訊安全管理規範與文書處理手冊。",
+        highlights: [
+          "包含序號 11～21 共 11 項文書與檔案管理法規／手冊（發行單位：行政院、國家發展委員會檔案管理局）。",
+          "涉及公文電子交換安全、電子儲存保存、檔案銷毀與紀錄管理。"
+        ],
+        is_recent: false
+      },
+      {
+        id: "isms-29-civil-service",
+        agency: "銓敘部",
+        agency_code: "MND_OTHER",
+        category: "法令與子法",
+        domain_tags: ["人事任用", "法遵"],
+        title: "公務人員任用法（發行/修訂：114.08.01）",
+        publish_date: "2025-08-01",
+        updated_date: "2025-08-01",
+        source_url: "https://www.mocs.gov.tw/",
+        summary: "源自《外來文件一覽表》（序號 29）：規範公務人員任用資格、職務配置與人事管理制度。",
+        highlights: [
+          "發行單位：銓敘部（表列日期：114.08.01）。"
+        ],
+        is_recent: false
+      },
+      {
+        id: "isms-32-climate-change",
+        agency: "環境部",
+        agency_code: "MOENV",
+        category: "法令與子法",
+        domain_tags: ["氣候變遷", "永續治理"],
+        title: "氣候變遷因應法（發行/修訂：112.02.15）",
+        publish_date: "2023-02-15",
+        updated_date: "2023-02-15",
+        source_url: "https://www.moenv.gov.tw/",
+        summary: "源自《外來文件一覽表》（序號 32）：涉及溫室氣體減量、氣候變遷調適與永續治理相關法規要求。",
+        highlights: [
+          "發行單位：環境部（表列日期：112.02.15）。"
+        ],
+        is_recent: false
+      },
+      {
+        id: "isms-35-prosecution-doc",
+        agency: "法務部",
+        agency_code: "MOJ",
+        category: "稽核與範本",
+        domain_tags: ["書類公開", "法遵"],
+        title: "檢察機關書類公開應行注意事項（發行/修訂：107.08.28）",
+        publish_date: "2018-08-28",
+        updated_date: "2018-08-28",
+        source_url: "https://www.moj.gov.tw/",
+        summary: "源自《外來文件一覽表》（序號 35）：規範檢察機關書類公開之應行注意事項與資訊揭露界線。",
+        highlights: [
+          "發行單位：法務部（表列日期：107.08.28）。"
+        ],
+        is_recent: false
       }
     ];
 
+    // 搜尋同義詞與別名對應表
+    const synonymMap = {
+      "個資": ["個資", "個人資料", "個資法", "個資會", "安維計畫", "pdpc"],
+      "個資法": ["個資", "個人資料", "個資法", "個資會", "安維計畫"],
+      "工控": ["工控", "ot", "ics", "scada", "dcs", "關鍵基礎設施", "ciip"],
+      "ot": ["ot", "工控", "ics", "scada", "dcs", "關鍵基礎設施"],
+      "iot": ["iot", "物聯網", "設備安全", "韌體"],
+      "物聯網": ["iot", "物聯網", "設備安全"],
+      "弱點": ["弱點", "ssvc", "kev", "nvd", "反向代理", "reverse proxy", "cve", "修補"],
+      "檔案": ["檔案", "文書", "公文", "電子儲存", "銷毀", "archives"],
+      "公文": ["公文", "文書", "檔案", "電子交換"],
+      "機密": ["機密", "國家機密", "機敏", "保密"],
+      "軟體": ["軟體", "著作權", "授權", "智慧財產"]
+    };
+
     const agencyMeta = {
-      ALL:  { label: "全部單位", badge: "bg-slate-100 text-slate-700" },
-      ACS:  { label: "資通安全署 (ACS)", badge: "bg-sky-100 text-sky-800" },
-      NICS: { label: "資通安全研究院 (NICS)", badge: "bg-indigo-100 text-indigo-800" },
-      FSC:  { label: "金管會 (FSC)", badge: "bg-amber-100 text-amber-800" },
-      PDPC: { label: "個資會／國發會 (PDPC)", badge: "bg-purple-100 text-purple-800" },
-      MOE:  { label: "教育部 (MOE)", badge: "bg-teal-100 text-teal-800" },
-      MOHW: { label: "衛生福利部 (MOHW)", badge: "bg-rose-100 text-rose-800" }
+      ALL:       { label: "全部單位", badge: "bg-slate-100 text-slate-700" },
+      ACS:       { label: "資通安全署 (ACS)", badge: "bg-sky-100 text-sky-800" },
+      NICS:      { label: "資通安全研究院 (NICS)", badge: "bg-indigo-100 text-indigo-800" },
+      FSC:       { label: "金管會 (FSC)", badge: "bg-amber-100 text-amber-800" },
+      PDPC:      { label: "個資會／國發會 (PDPC)", badge: "bg-purple-100 text-purple-800" },
+      MOE:       { label: "教育部 (MOE)", badge: "bg-teal-100 text-teal-800" },
+      MOHW:      { label: "衛生福利部 (MOHW)", badge: "bg-rose-100 text-rose-800" },
+      MODA:      { label: "數位發展部 (MODA)", badge: "bg-cyan-100 text-cyan-800" },
+      MOJ:       { label: "法務部 (MOJ)", badge: "bg-stone-200 text-stone-800" },
+      NAA_DOCS:  { label: "檔案局／行政院", badge: "bg-emerald-100 text-emerald-800" },
+      TIPO:      { label: "智慧財產局 (TIPO)", badge: "bg-orange-100 text-orange-800" },
+      MND_OTHER: { label: "銓敘部", badge: "bg-zinc-200 text-zinc-800" },
+      MOENV:     { label: "環境部 (MOENV)", badge: "bg-lime-100 text-lime-800" }
     };
 
     const categories = ["全部類型", "OT / 工控 / IoT", "法令與子法", "技術指引", "防護基準", "稽核與範本"];
+    const quickDomains = ["全部領域", "OT", "工控ICS", "IoT", "個資法", "文書檔案", "法遵", "AI資安"];
 
     let regulationsData = [...fallbackData];
     let selectedAgency = "ALL";
     let selectedCategory = "全部類型";
+    let selectedDomain = "全部領域";
     let favorites = JSON.parse(localStorage.getItem("cyber_reg_favs") || "[]");
 
     async function initData() {
@@ -350,6 +533,7 @@
       } catch (e) {}
       renderTabs();
       renderCategories();
+      renderDomains();
       renderList();
     }
 
@@ -359,6 +543,7 @@
         const count = code === "ALL"
           ? regulationsData.length
           : regulationsData.filter(item => item.agency_code === code).length;
+        if (code !== "ALL" && count === 0) return "";
         const active = selectedAgency === code;
         return `
           <button onclick="selectAgency('${code}')"
@@ -387,6 +572,21 @@
       }).join("");
     }
 
+    function renderDomains() {
+      const container = document.getElementById("domain-filters");
+      container.innerHTML = quickDomains.map(dom => {
+        const active = selectedDomain === dom;
+        return `
+          <button onclick="selectDomain('${dom}')"
+            class="px-2.5 py-1 rounded-md text-xs font-medium transition cursor-pointer ${
+              active ? "bg-slate-800 text-white" : "bg-slate-50 text-slate-600 border border-slate-200 hover:bg-slate-100"
+            }">
+            ${dom}
+          </button>
+        `;
+      }).join("");
+    }
+
     function selectAgency(code) {
       selectedAgency = code;
       renderTabs();
@@ -396,6 +596,12 @@
     function selectCategory(cat) {
       selectedCategory = cat;
       renderCategories();
+      renderList();
+    }
+
+    function selectDomain(dom) {
+      selectedDomain = dom;
+      renderDomains();
       renderList();
     }
 
@@ -409,14 +615,51 @@
       renderList();
     }
 
-    function highlightText(text, query) {
-      if (!query) return text;
-      const escaped = query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-      return text.replace(new RegExp(`(${escaped})`, "gi"), "<mark>$1</mark>");
+    function buildSearchBlob(item) {
+      return [
+        item.id || "",
+        item.title || "",
+        item.summary || "",
+        item.agency || "",
+        item.agency_code || "",
+        item.category || "",
+        item.publish_date || "",
+        item.updated_date || "",
+        item.source_url || "",
+        ...(item.domain_tags || []),
+        ...(item.highlights || [])
+      ].join(" ").toLowerCase();
+    }
+
+    function matchesSearchQuery(item, rawQuery) {
+      if (!rawQuery) return true;
+      const tokens = rawQuery.toLowerCase().split(/\s+/).filter(Boolean);
+      const blob = buildSearchBlob(item);
+
+      return tokens.every(token => {
+        const expanded = synonymMap[token] || [token];
+        return expanded.some(term => blob.includes(term.toLowerCase()));
+      });
+    }
+
+    function highlightText(text, rawQuery) {
+      if (!rawQuery) return text;
+      const tokens = rawQuery.split(/\s+/).filter(Boolean);
+      const terms = new Set();
+      tokens.forEach(tok => {
+        terms.add(tok);
+        (synonymMap[tok.toLowerCase()] || []).forEach(s => terms.add(s));
+      });
+      const escapedList = Array.from(terms)
+        .filter(t => t.length >= 2 || /[^\x00-\x7F]/.test(t))
+        .map(t => t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+      if (escapedList.length === 0) return text;
+      const regex = new RegExp(`(${escapedList.join("|")})`, "gi");
+      return text.replace(regex, "<mark>$1</mark>");
     }
 
     function renderList() {
-      const query = document.getElementById("search-input").value.trim();
+      const rawQuery = document.getElementById("search-input").value.trim();
       const onlyRecent = document.getElementById("filter-recent").checked;
       const onlyFav = document.getElementById("filter-fav").checked;
 
@@ -427,23 +670,20 @@
       const filtered = regulationsData.filter(item => {
         if (selectedAgency !== "ALL" && item.agency_code !== selectedAgency) return false;
         if (selectedCategory !== "全部類型" && item.category !== selectedCategory) return false;
+        if (selectedDomain !== "全部領域") {
+          const tags = item.domain_tags || [];
+          const inBlob = buildSearchBlob(item).includes(selectedDomain.toLowerCase());
+          if (!tags.includes(selectedDomain) && !inBlob) return false;
+        }
         if (onlyRecent && !item.is_recent) return false;
         if (onlyFav && !favorites.includes(item.id)) return false;
-        if (query) {
-          const q = query.toLowerCase();
-          const inTitle = item.title.toLowerCase().includes(q);
-          const inSummary = item.summary.toLowerCase().includes(q);
-          const inAgency = item.agency.toLowerCase().includes(q);
-          const inTags = (item.domain_tags || []).some(t => t.toLowerCase().includes(q));
-          const inHighlights = (item.highlights || []).some(h => h.toLowerCase().includes(q));
-          return inTitle || inSummary || inAgency || inTags || inHighlights;
-        }
+        if (!matchesSearchQuery(item, rawQuery)) return false;
         return true;
       });
 
-      const agencyLabel = selectedAgency === "ALL" ? "全部單位" : agencyMeta[selectedAgency].label;
+      const agencyLabel = selectedAgency === "ALL" ? "全部單位" : (agencyMeta[selectedAgency]?.label || selectedAgency);
       document.getElementById("result-summary").textContent =
-        `目前篩選：${agencyLabel} ／ ${selectedCategory}（共 ${filtered.length} 筆）`;
+        `目前篩選：${agencyLabel} ／ ${selectedCategory} ／ ${selectedDomain}（共 ${filtered.length} 筆）`;
 
       const listEl = document.getElementById("regulation-list");
       const emptyEl = document.getElementById("empty-state");
@@ -475,10 +715,10 @@
                 </div>
                 <h2 class="text-lg font-bold text-slate-900">
                   <a href="${item.source_url}" target="_blank" rel="noopener noreferrer" class="hover:text-sky-600 transition">
-                    ${highlightText(item.title, query)}
+                    ${highlightText(item.title, rawQuery)}
                   </a>
                 </h2>
-                <p class="text-sm text-slate-600 leading-relaxed">${highlightText(item.summary, query)}</p>
+                <p class="text-sm text-slate-600 leading-relaxed">${highlightText(item.summary, rawQuery)}</p>
               </div>
               <div class="flex sm:flex-row md:flex-col items-stretch sm:items-center md:items-end gap-2 shrink-0">
                 <button onclick="openModal('${item.id}')" class="px-3.5 py-2 text-xs font-semibold rounded-lg bg-sky-50 text-sky-700 hover:bg-sky-100 border border-sky-200 cursor-pointer">
@@ -534,17 +774,19 @@
     function resetFilters() {
       selectedAgency = "ALL";
       selectedCategory = "全部類型";
+      selectedDomain = "全部領域";
       document.getElementById("search-input").value = "";
       document.getElementById("filter-recent").checked = false;
       document.getElementById("filter-fav").checked = false;
       renderTabs();
       renderCategories();
+      renderDomains();
       renderList();
     }
 
     function simulateSync() {
       const toast = document.getElementById("toast");
-      toast.textContent = "已完成同步檢查：目前已載入最新 IT、OT/工控/IoT、金管會、個資法與各部會資安指引資料（共 " + regulationsData.length + " 筆）。";
+      toast.textContent = "已完成同步檢查：目前已載入最新 IT、OT/工控/IoT、個資法、文書檔案與各部會治理資料（共 " + regulationsData.length + " 筆）。";
       toast.classList.remove("hidden");
       setTimeout(() => toast.classList.add("hidden"), 4500);
     }

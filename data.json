@@ -1,12 +1,15 @@
 {
-  "last_updated": "2026-11-25 15:20",
+  "last_updated": "2026-11-26 14:23",
   "items": [
     {
       "id": "acs-21256",
       "agency": "數位發展部資通安全署",
       "agency_code": "ACS",
       "category": "技術指引",
-      "domain_tags": ["IT", "AI資安"],
+      "domain_tags": [
+        "IT",
+        "AI資安"
+      ],
       "title": "各機關基於風險導向之弱點處置期限評估指引",
       "publish_date": "2026-11-06",
       "updated_date": "2026-11-13",
@@ -24,7 +27,11 @@
       "agency": "數位發展部資通安全署",
       "agency_code": "ACS",
       "category": "法令與子法",
-      "domain_tags": ["IT", "OT", "資安法"],
+      "domain_tags": [
+        "IT",
+        "OT",
+        "資安法"
+      ],
       "title": "資通安全管理法施行細則及資通安全責任等級分級辦法（2026年1月修正）",
       "publish_date": "2026-01-05",
       "updated_date": "2026-01-09",
@@ -41,7 +48,11 @@
       "agency": "數位發展部資通安全署",
       "agency_code": "ACS",
       "category": "OT / 工控 / IoT",
-      "domain_tags": ["OT", "工控ICS", "關鍵基礎設施"],
+      "domain_tags": [
+        "OT",
+        "工控ICS",
+        "關鍵基礎設施"
+      ],
       "title": "115 年度關鍵資訊基礎設施資安防護建議（涵蓋 OT／工控與雲端互聯風險）",
       "publish_date": "2026-01-01",
       "updated_date": "2026-06-01",
@@ -58,7 +69,12 @@
       "agency": "數位發展部資通安全署",
       "agency_code": "ACS",
       "category": "OT / 工控 / IoT",
-      "domain_tags": ["OT", "工控ICS", "IoT", "SCADA"],
+      "domain_tags": [
+        "OT",
+        "工控ICS",
+        "IoT",
+        "SCADA"
+      ],
       "title": "工控物聯網共通性資安指南與工控設備業資安實務指南",
       "publish_date": "2025-06-01",
       "updated_date": "2026-03-01",
@@ -75,7 +91,10 @@
       "agency": "國家資通安全研究院",
       "agency_code": "NICS",
       "category": "OT / 工控 / IoT",
-      "domain_tags": ["IoT", "設備安全"],
+      "domain_tags": [
+        "IoT",
+        "設備安全"
+      ],
       "title": "物聯網（IoT）設備共通資安指引與檢測基準參考",
       "publish_date": "2025-01-01",
       "updated_date": "2026-01-15",
@@ -92,12 +111,15 @@
       "agency": "國家資通安全研究院",
       "agency_code": "NICS",
       "category": "防護基準",
-      "domain_tags": ["IT", "系統防護"],
+      "domain_tags": [
+        "IT",
+        "系統防護"
+      ],
       "title": "資通系統防護基準驗證實務與成熟度評估指引",
       "publish_date": "2026-06-03",
       "updated_date": "2026-06-03",
       "source_url": "https://www.nics.nat.gov.tw/",
-      "summary: "協助各公務機關及特定非公務機關依資通系統防護需求分級（普、中、高），落實存取控制、鑑識與稽核、組態管理及系統獲取開發維護之控制措施。",
+      "summary": "協助各公務機關及特定非公務機關依資通系統防護需求分級（普、中、高），落實存取控制、鑑識與稽核、組態管理及系統獲取開發維護之控制措施。",
       "highlights": [
         "提供普、中、高三個防護等級之具體檢核項目與佐證資料準備範例。",
         "對齊 ISO/IEC 27001:2022 控制措施與政府組態基準（GCB）導入實務。"
@@ -109,12 +131,15 @@
       "agency": "金融監督管理委員會",
       "agency_code": "FSC",
       "category": "防護基準",
-      "domain_tags": ["IT", "公司治理"],
+      "domain_tags": [
+        "IT",
+        "公司治理"
+      ],
       "title": "上市上櫃公司資通安全管控指引修訂對照表（櫃買中心彙整）",
       "publish_date": "2026-11-11",
       "updated_date": "2026-11-11",
       "source_url": "https://dsp.tpex.org.tw/web/listing/security.php",
-      "summary: "彙整上市上櫃公司資通安全管控指引修訂對照與資安分級防護重點，涵蓋資安長治理職責、資安人力配置、內控連結與重大事件揭露。",
+      "summary": "彙整上市上櫃公司資通安全管控指引修訂對照與資安分級防護重點，涵蓋資安長治理職責、資安人力配置、內控連結與重大事件揭露。",
       "highlights": [
         "強化董事會對資通安全風險之監督責任與資安長（CISO）定期報告機制。",
         "明確規範第一級與第二級上市櫃公司之資安專責主管與人員配置門檻。"
@@ -126,12 +151,15 @@
       "agency": "金融監督管理委員會",
       "agency_code": "FSC",
       "category": "技術指引",
-      "domain_tags": ["IT", "金融資安"],
+      "domain_tags": [
+        "IT",
+        "金融資安"
+      ],
       "title": "金融機構資通安全防護基準與新興科技作業規範彙整",
       "publish_date": "2026-11-17",
       "updated_date": "2026-11-17",
       "source_url": "https://www.fsc.gov.tw/ch/home.jsp?id=1072&parentpath=0,7,478",
-      "summary: "涵蓋金融機構資通安全防護基準及金融機構運用新興科技作業規範，落實零信任架構、API/雲端監控、AI安全與供應鏈管理要求。",
+      "summary": "涵蓋金融機構資通安全防護基準及金融機構運用新興科技作業規範，落實零信任架構、API/雲端監控、AI安全與供應鏈管理要求。",
       "highlights": [
         "針對雲端運算、AI 應用與開放 API 建立安全控管與持續監控基準。",
         "要求金融機構強化第三方資訊服務供應商之資安風險評估與稽核。"
@@ -143,12 +171,15 @@
       "agency": "個人資料保護專責機關／國發會",
       "agency_code": "PDPC",
       "category": "法令與子法",
-      "domain_tags": ["個資法", "IT"],
+      "domain_tags": [
+        "個資法",
+        "IT"
+      ],
       "title": "個人資料保護法修正條文重點與個資會籌備處法規預告動態",
       "publish_date": "2025-11-11",
       "updated_date": "2026-11-24",
       "source_url": "https://www.pdpc.gov.tw/",
-      "summary: "追蹤立法院三讀通過並公布之《個人資料保護法》部分條文修正重點，以及個人資料保護委員會籌備處推動之子法與施行細則修正草案預告動態。",
+      "summary": "追蹤立法院三讀通過並公布之《個人資料保護法》部分條文修正重點，以及個人資料保護委員會籌備處推動之子法與施行細則修正草案預告動態。",
       "highlights": [
         "【雙軌通報與安全維護】強化個資侵害事故通報與通知義務、安全維護措施及個資治理要求。",
         "【子法與籌備動態】可於個人資料保護委員會籌備處網站追蹤相關子法修正草案與施行進度。"
@@ -160,12 +191,15 @@
       "agency": "個人資料保護專責機關／國發會",
       "agency_code": "PDPC",
       "category": "稽核與範本",
-      "domain_tags": ["個資法", "安維計畫"],
+      "domain_tags": [
+        "個資法",
+        "安維計畫"
+      ],
       "title": "個人資料檔案安全維護計畫與適當安全維護措施（施行細則第12條／第8條）",
       "publish_date": "2024-01-12",
       "updated_date": "2026-04-02",
       "source_url": "https://www.ndc.gov.tw/",
-      "summary: "整理《個人資料保護法施行細則》第12條適當安全維護措施、第8條委外監督義務及各目的事業主管機關個人資料檔案安全維護管理辦法之稽核重點。",
+      "summary": "整理《個人資料保護法施行細則》第12條適當安全維護措施、第8條委外監督義務及各目的事業主管機關個人資料檔案安全維護管理辦法之稽核重點。",
       "highlights": [
         "涵蓋個資盤點與風險評估、事故應變通報、資料安全管理、設備與存取控管及委外廠商監督。",
         "實務上可結合 ISO/IEC 27701 與各業別安維計畫範本建立查核紀錄。"
@@ -177,12 +211,15 @@
       "agency": "教育部",
       "agency_code": "MOE",
       "category": "稽核與範本",
-      "domain_tags": ["IT", "教育體系"],
+      "domain_tags": [
+        "IT",
+        "教育體系"
+      ],
       "title": "資通安全維護計畫（範本）版本 2.1（國教署與教育體系適用）",
       "publish_date": "2026-08-04",
       "updated_date": "2026-08-04",
       "source_url": "https://www.k12ea.gov.tw/",
-      "summary: "教育部國民及學前教育署更新之資通安全維護計畫範本 v2.1，協助各級學校與教育體系落實資安維護計畫撰寫、委外管理與稽核改善。",
+      "summary": "教育部國民及學前教育署更新之資通安全維護計畫範本 v2.1，協助各級學校與教育體系落實資安維護計畫撰寫、委外管理與稽核改善。",
       "highlights": [
         "涵蓋核心業務盤點、資安推動小組組織職掌、委外廠商安全管理與教育訓練時數規範。"
       ],
@@ -193,16 +230,205 @@
       "agency": "衛生福利部",
       "agency_code": "MOHW",
       "category": "技術指引",
-      "domain_tags": ["IT", "醫療OT設備"],
+      "domain_tags": [
+        "IT",
+        "醫療OT設備"
+      ],
       "title": "基層醫療院所資安防護參考指引與醫療資安治理重點",
       "publish_date": "2026-02-03",
       "updated_date": "2026-02-03",
       "source_url": "https://www.mohw.gov.tw/",
-      "summary: "提供醫療與醫務設備區隔、作業系統與防毒更新、教育訓練時數、委外合約資安、健保VPN與Wi-Fi網段隔離及高敏感醫療資料防護參考。",
+      "summary": "提供醫療與醫務設備區隔、作業系統與防毒更新、教育訓練時數、委外合約資安、健保VPN與Wi-Fi網段隔離及高敏感醫療資料防護參考。",
       "highlights": [
         "要求醫療設備網路與一般行政網路隔離，並加強對 HIS/PACS 系統與健保 VPN 端點之存取控管。"
+      ],
+      "is_recent": false
+    },
+    {
+      "id": "isms-01-esign-law",
+      "agency": "數位發展部",
+      "agency_code": "MODA",
+      "category": "法令與子法",
+      "domain_tags": [
+        "電子簽章",
+        "法遵"
+      ],
+      "title": "電子簽章法（發行/修訂：113.05.15）",
+      "publish_date": "2024-05-15",
+      "updated_date": "2024-05-15",
+      "source_url": "https://law.moj.gov.tw/",
+      "summary": "源自《外來文件一覽表》（序號 1）：規範電子文件與電子簽章之效力、憑證與數位簽章應用，屬數位治理與資訊交換相關法規。",
+      "highlights": [
+        "發行單位：數位發展部（表列日期：113.05.15）。",
+        "與電子文件身分確認、不可否認性及數位化流程合規相關。"
+      ],
+      "is_recent": false
+    },
+    {
+      "id": "isms-02-esign-rules",
+      "agency": "數位發展部",
+      "agency_code": "MODA",
+      "category": "法令與子法",
+      "domain_tags": [
+        "電子簽章",
+        "法遵"
+      ],
+      "title": "電子簽章法施行細則（發行/修訂：113.11.14）",
+      "publish_date": "2024-11-14",
+      "updated_date": "2024-11-14",
+      "source_url": "https://law.moj.gov.tw/",
+      "summary": "源自《外來文件一覽表》（序號 2）：明定《電子簽章法》執行細節與相關作業規定。",
+      "highlights": [
+        "發行單位：數位發展部（表列日期：113.11.14）。"
+      ],
+      "is_recent": false
+    },
+    {
+      "id": "isms-05-06-state-secret",
+      "agency": "法務部",
+      "agency_code": "MOJ",
+      "category": "法令與子法",
+      "domain_tags": [
+        "國家機密",
+        "機敏資訊"
+      ],
+      "title": "國家機密保護法及施行細則（112.12.27 / 114.10.27）",
+      "publish_date": "2023-12-27",
+      "updated_date": "2025-10-27",
+      "source_url": "https://law.moj.gov.tw/",
+      "summary": "源自《外來文件一覽表》（序號 5、6）：規範國家機密核定、維護、保密措施及施行細則，與機密資訊保護及存取控管高度相關。",
+      "highlights": [
+        "發行單位：法務部（國家機密保護法 112.12.27、施行細則 114.10.27）。"
+      ],
+      "is_recent": false
+    },
+    {
+      "id": "isms-07-copyright",
+      "agency": "經濟部智慧財產局",
+      "agency_code": "TIPO",
+      "category": "法令與子法",
+      "domain_tags": [
+        "著作權",
+        "軟體與智慧財產"
+      ],
+      "title": "著作權法（發行/修訂：111.06.15）",
+      "publish_date": "2022-06-15",
+      "updated_date": "2022-06-15",
+      "source_url": "https://www.tipo.gov.tw/",
+      "summary": "源自《外來文件一覽表》（序號 7）：涉及軟體授權、數位內容重製與散布、智慧財產權管理及內部合法使用查核。",
+      "highlights": [
+        "發行單位：經濟部智慧財產局（表列日期：111.06.15）。",
+        "機關與企業軟體資產盤點及合法授權稽核之重要法源依據。"
+      ],
+      "is_recent": false
+    },
+    {
+      "id": "isms-09-criminal-computer",
+      "agency": "法務部",
+      "agency_code": "MOJ",
+      "category": "法令與子法",
+      "domain_tags": [
+        "妨害電腦使用罪",
+        "刑事法規"
+      ],
+      "title": "刑法第三十六章 妨害電腦使用罪（發行/修訂：114.08.01）",
+      "publish_date": "2025-08-01",
+      "updated_date": "2025-08-01",
+      "source_url": "https://law.moj.gov.tw/",
+      "summary": "源自《外來文件一覽表》（序號 9）：規範無故入侵電腦或其相關設備、干擾電磁紀錄與電腦系統運作之刑事責任。",
+      "highlights": [
+        "發行單位：法務部（表列日期：114.08.01）。",
+        "與事件鑑識、違規行為追查及內部人員行為規範相關。"
+      ],
+      "is_recent": false
+    },
+    {
+      "id": "isms-11-21-archives-docs",
+      "agency": "國家發展委員會檔案管理局／行政院",
+      "agency_code": "NAA_DOCS",
+      "category": "稽核與範本",
+      "domain_tags": [
+        "文書與檔案管理",
+        "電子儲存"
+      ],
+      "title": "文書及檔案管理法規彙編（檔案法施行細則、電子儲存、文書處理手冊等）",
+      "publish_date": "2023-09-01",
+      "updated_date": "2025-11-26",
+      "source_url": "https://www.archives.gov.tw/",
+      "summary": "源自《外來文件一覽表》（序號 11～21）：涵蓋檔案電子儲存管理實施辦法、檔案法施行細則、機關檔案保存年限及銷毀辦法、文書流程管理作業規範、公文電子交換系統資訊安全管理規範與文書處理手冊。",
+      "highlights": [
+        "包含序號 11～21 共 11 項文書與檔案管理法規／手冊（發行單位：行政院、國家發展委員會檔案管理局）。",
+        "涉及公文電子交換安全、電子儲存保存、檔案銷毀與紀錄管理。"
+      ],
+      "is_recent": false
+    },
+    {
+      "id": "isms-29-civil-service",
+      "agency": "銓敘部",
+      "agency_code": "MND_OTHER",
+      "category": "法令與子法",
+      "domain_tags": [
+        "人事與任用",
+        "法遵"
+      ],
+      "title": "公務人員任用法（發行/修訂：114.08.01）",
+      "publish_date": "2025-08-01",
+      "updated_date": "2025-08-01",
+      "source_url": "https://www.mocs.gov.tw/",
+      "summary": "源自《外來文件一覽表》（序號 29）：規範公務人員任用資格、職務配置與人事管理制度。",
+      "highlights": [
+        "發行單位：銓敘部（表列日期：114.08.01）。"
+      ],
+      "is_recent": false
+    },
+    {
+      "id": "isms-32-climate-change",
+      "agency": "環境部",
+      "agency_code": "MOENV",
+      "category": "法令與子法",
+      "domain_tags": [
+        "氣候變遷",
+        "永續治理"
+      ],
+      "title": "氣候變遷因應法（發行/修訂：112.02.15）",
+      "publish_date": "2023-02-15",
+      "updated_date": "2023-02-15",
+      "source_url": "https://www.moenv.gov.tw/",
+      "summary": "源自《外來文件一覽表》（序號 32）：涉及溫室氣體減量、氣候變遷調適與永續治理相關法規要求。",
+      "highlights": [
+        "發行單位：環境部（表列日期：112.02.15）。"
+      ],
+      "is_recent": false
+    },
+    {
+      "id": "isms-35-prosecution-doc",
+      "agency": "法務部",
+      "agency_code": "MOJ",
+      "category": "稽核與範本",
+      "domain_tags": [
+        "書類公開",
+        "業務規範"
+      ],
+      "title": "檢察機關書類公開應行注意事項（發行/修訂：107.08.28）",
+      "publish_date": "2018-08-28",
+      "updated_date": "2018-08-28",
+      "source_url": "https://www.moj.gov.tw/",
+      "summary": "源自《外來文件一覽表》（序號 35）：規範檢察機關書類公開之應行注意事項與資訊揭露界線。",
+      "highlights": [
+        "發行單位：法務部（表列日期：107.08.28）。"
       ],
       "is_recent": false
     }
   ]
 }
+```[cite: 9, 10]
+
+### 更新與驗證步驟
+1. 將上方 JSON 完整貼入儲存庫根目錄的 `data.json` 並提交（Commit）[cite: 10]。
+2. 回到 [台灣政府資安、工控OT與個資法規指引彙整中心](https://davidk28.github.io/TGC-Hub/) 按 `Ctrl + F5`（Mac 為 `Cmd + Shift + R`）清除快取重新載入。
+3. **驗證結果**：畫面頂部「資料更新時間」會變為 `2026-11-26 14:23`，且「收錄總數」會從 `12` 增加為 `21`（目前網頁因點選了「法令與子法」而顯示共 2 筆，點選「顯示全部單位與類型」即可查看全部）[cite: 10]。
+
+<ElicitationsGroup message="如果更新後仍有顯示問題，可以點選以下選項繼續排查：">
+  <Elicitation label="網頁仍顯示 12 筆" query="我已經更新了 data.json，但網頁上還是顯示 12 筆，該怎麼排查？"/>
+  <Elicitation label="檢查 JSON 語法" query="更新 data.json 後網頁載入失敗，我該怎麼檢查 JSON 格式是否有錯？"/>
+</ElicitationsGroup>
